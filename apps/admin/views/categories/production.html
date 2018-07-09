@@ -1,0 +1,81 @@
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        
+        <div class="btn-toolbar">
+            <div class="btn-group  pull-right">
+                    <button class="btn btn-default" ng-click="$root.$dialog($id).url(urlProducDetail).done()"><%- @getAppRes("New") %></button>
+                    <button class="btn btn-default" ng-click="doDelete()"><%- @getAppRes("Delete") %></button>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+            <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="p in data.items">
+                        
+                        <div class="row">
+                             
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                <img src="<%- @getAppUrl('resources/images')%>/{{p.main_photo_id}}" style="width:120px" />
+                        </div>
+                        
+                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                            <span><%- @getAppRes("Code") %></span>
+                            <a>{{p.code}}</a><br>
+                            <span><%- @getAppRes("Name") %></span>
+                            <a>{{p.code}}</a><br>
+                            {{p.description}}
+                            <button class="btn btn-default pull-right" ng-click="$root.$dialog($id).params(p.code).url(urlProducDetail).done()"><%- @getAppRes("Edit") %></button>
+                        </div>
+                        
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                                <input type="checkbox" ng-model="p.selected"/><br>
+                                
+                        </div>
+                        </div>
+                       
+                        
+                    </li>
+                    
+                </ul>
+    </div>
+</div>
+
+<script>
+    (function(scope){
+        scope.query={
+            pageIndex:0,
+            pageSize:20
+        }
+        scope.urlProducDetail="<%- @getAppUrl('categories/product')%>";
+        var ws=ajax().create('<%- @getFullUrl()%>');
+        scope.loadData=function(){
+            ws.call("getData")
+            .data(scope.query)
+            .done(function(res){
+                scope.data=res;
+                scope.$applyAsync();
+            });
+        }
+        scope.doDelete=function(){
+            var deleteKeys=[];
+            for(var i=0;i<scope.data.items.length;i++){
+                if(scope.data.items[i].selected){
+                    deleteKeys.push(scope.data.items[i].code);
+                }
+            }
+            if(deleteKeys.length===0){
+                alert('<%- @getAppRes("Please, selected item for deleting")%>')
+            }
+            else {
+                ws.call("deleteItems")
+                .data(deleteKeys)
+                .done(function(res){
+                    scope.loadData();
+                });
+
+            }
+        }
+        scope.loadData();
+    })
+</script>

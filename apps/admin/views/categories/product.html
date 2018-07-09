@@ -1,0 +1,82 @@
+<div class="container" title="<%- @getAppRes("Detail product") %>">
+    <div>
+        
+    
+        <div class="form-group">
+            <label for=""><%- @getAppRes("Code") %></label>
+            <input type="text" class="form-control" ng-model="data.code" placeholder="<%- @getAppRes("Code") %>">
+        </div>
+        <div class="form-group">
+                <label for=""><%- @getAppRes("Name") %></label>
+                <input type="text" class="form-control" ng-model="data.name" placeholder="<%- @getAppRes("Name") %>">
+        </div>
+        <div class="form-group">
+                <label for=""><%- @getAppRes("Description") %></label>
+                <textarea class="form-control" ng-model="data.description" placeholder="<%- @getAppRes("Description") %>">
+
+                </textarea>
+                
+        </div>
+        <div class="form-group">
+            <label for=""><%- @getAppRes("Image") %></label>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <input type="file" accept="image/*" image="image"
+                resize-max-height="300"
+                resize-max-width="250"
+                resize-quality="0.7" />
+            </div>
+            
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <img ng-show="image" ng-src="{{image.resized.dataURL}}" />    
+            </div>
+            
+            
+                
+            
+        </div>
+        
+    
+        
+    
+        <button class="btn btn-primary pull-right" ng-click="doSave();">Submit</button>
+    </div>
+</div>
+<script>
+        (function(scope,params){
+            scope.data={};
+            var ws=ajax().create('<%- @getFullUrl()%>');
+            scope.loadData=function(){
+                ws.call("getData")
+                .data({
+                    code:params
+                })
+                .done(function(res){
+                    scope.data=res;
+                    scope.$applyAsync();
+                });
+            }
+            scope.loadData();
+            scope.doSave=function(){
+                console.log(scope);
+                ws.call("saveData").data({
+                    data:scope.data,
+                    image:(scope.image)?{
+                       data:scope.image.dataURL,
+                       fileName:scope.image.file.name
+                    }:null
+                })
+                .done(function(res){
+                    if(res.error_message){
+                        alert(res.error_message);
+                        scope.$element.find("[ng-model='data."+res.error_field+"']").focus();
+                        return;
+                    }
+                    else {
+                        scope.$parent.loadData();
+                        scope.$doClose();
+                    }
+                    
+                });
+            }
+        })
+    </script>

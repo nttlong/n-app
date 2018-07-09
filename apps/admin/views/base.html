@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="images/favicon.ico" type="image/ico" />
+
+    <title>Gentelella Alela! | </title>
+    <% include 'common/base.header' %>
+
+
+  </head>
+
+  <body class="nav-md" ng-controller="app" ng-cloak="">
+    <div class="container body">
+      <div class="main_container">
+            <div class="col-md-3 left_col menu_fixed">
+                    <div class="left_col scroll-view">
+            
+            
+
+            <div class="clearfix"></div>
+
+            
+
+            <br />
+
+            <!-- sidebar menu -->
+            <% include 'common/body.siderbar' %>
+            <!-- /sidebar menu -->
+
+            
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <% include 'common/body.nav' %>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          
+
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div>
+                  <% content %>
+              </div>
+                    
+            </div>
+
+          </div>
+         
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        
+        <!-- /footer content -->
+      </div>
+    </div>
+    <% include 'common/base.footer' %>
+    <script>
+      $(document).ready(function(){
+        $('[role="main"]').css({
+          "min-height":$(window).height()
+        })
+      })
+    </script>
+    <script>
+      ng_app("app","app",[],function(scope){
+         if(window.startUp){
+           window.startUp(scope);
+         }
+
+      });
+    </script>
+	
+  </body>
+</html>

@@ -1,0 +1,15 @@
+module.exports=require("quicky/q-func-define")(
+    {
+        pageSize:["number",true],
+        pageIndex:["number",true],
+        searchText:["text",true],
+        filter:{
+            app:["text",true],
+            view:["text",true],
+            language:["text",true]
+        }
+    },
+    function(args,cb){
+        cb(null,{})
+    }
+)

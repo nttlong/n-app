@@ -1,0 +1,23 @@
+<%
+    var data={
+        a:1
+    }
+    console.log(request);
+%>
+<html>
+    <header>
+
+    </header>
+    <body>
+        <form action="<%=getAppUrl("login")%>" method="POST">
+            <label><%=getGlobalRes("Username")%></label>
+            <input type="text" name="username" value="<%=model.username%>">
+            <label><%=getGlobalRes("Password")%></label>
+            <input type="password" name="password">
+            <input type="submit" value="Login">
+        </form>
+        <div>
+            <%=model.error%>
+        </div>
+    </body>
+</html>

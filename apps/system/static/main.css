@@ -1,0 +1,12 @@
+div.mask {
+    background-image: url("images/Spinner-1s-68px.svg");
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 12000;
+    background-position: center center;
+    background-repeat: no-repeat
+    
+}

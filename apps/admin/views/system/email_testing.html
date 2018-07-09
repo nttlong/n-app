@@ -1,0 +1,44 @@
+
+<form action="" method="POST" role="form" title="<%- @getAppRes('Test send email')%>">
+    
+
+    <div class="form-group">
+        <label for=""><%- @getAppRes("Mail to")%></label>
+        <input type="email" class="form-control" ng-model="data.MailTo" placeholder="<%- @getAppRes("Mail to")%>">
+    </div>
+    <div class="form-group">
+            <label for=""><%- @getAppRes("Subject")%></label>
+            <input type="text" class="form-control" ng-model="data.Subject" placeholder="<%- @getAppRes("Subject")%>">
+        </div>
+        <div class="form-group">
+                <label for=""><%- @getAppRes("Body")%></label>
+                <input type="text" class="form-control" ng-model="data.Body" placeholder="<%- @getAppRes("Body")%>">
+        </div>
+
+        <div class="form-group" ng-if="result.error_message">
+            {{result.error_message}}
+        </div>
+        <div class="form-group" ng-if="result.result">
+                <%- @getAppRes("Test email setting is successfull")%>
+            </div>
+    
+
+    <input type="button" class="btn btn-primary pull-right"  ng-click="doTestSendEmail()" value='<%- @getAppRes("Send")%>'/>
+</form>
+<script>
+    (function(scope,settings){
+        scope.data={};
+        var ws=ajax().create('<%- @getFullUrl()%>');
+        scope.doTestSendEmail=function(){
+            ws.call("testSendEmail").data({
+                settings:settings,
+                data:scope.data
+            }).done(function(res){
+                console.log(res);
+                scope.result=res;
+                scope.$applyAsync();
+
+            });
+        }
+    })
+</script>

@@ -1,0 +1,62 @@
+<nav class="navbar navbar-default" role="navigation" data-spy="affix" data-offset-top="50">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand logo" href="<%- @getAppUrl()%>"><img src="<%- @getAppStatic('assets/img/logo.png') %>" alt=""></a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="navbar">              
+          <!-- Start Navigation List -->
+          <ul class="nav navbar-nav">
+            <li>
+              <%
+               
+               if this.request.getCurrentUrl()!=this.request.getAppUrl()
+                   this.isShowHomeMenu=true;
+               if this.request.getCurrentUrl()!=this.request.getAppUrl("login")
+                   this.isShowLoginMenu=true;
+              %>
+              <%if @isShowHomeMenu :%>
+              <a  href="<%- @getAppUrl() %>">
+              <%- @getAppRes("Home")%> <i class="fa"></i>
+              </a>
+              <% end %>
+            
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right float-right">
+            
+            <% if @getUser() :%>
+            <% if @getUser().isEmployer :%>
+            <li class="left"><a href="post-job.html"><i class="ti-pencil-alt"></i> Post A Job</a></li>
+            <% end %>
+            <li>
+                <a  href="<%- @getAppUrl('my-account') %>"">
+                <%- @getUser().displayName %> <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="dropdown">
+                  <li>
+                    <a class="active" href="<%- @getAppUrl('sign-out') %>">
+                    <%- @getAppRes("Signout") %>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <% else :%>  
+            <% if @isShowLoginMenu :%>
+            <li class="right"><a href="<%- @getAppUrl('my-account') %>"><i class="ti-lock"></i><%- @getAppRes("Log In") %></a></li>
+            <% end %>
+            <% end %>
+          </ul>
+        </div>                           
+      </div>
+      <!-- Mobile Menu Start -->
+     <% include 'common/body.header.nav.mobile' %>
+      <!-- Mobile Menu End --> 
+    </nav>

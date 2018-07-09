@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <%
+            debugger
+            var forms=loadModule("./packages/q-forms");
+            var form=forms.getForm(model.source)
+        %>
+        <title>List of customers</title>
+    </head>
+    <body>...
+            <div title="" class="container-fluid">
+                <%form.getFormRows().forEach(function(row){%>
+                        <%form.getFormColumns(row).forEach(function(col){%>
+                            <div class="col-md-<%=col.mdCol%>">
+                                <%if(col.type==="label") {%>
+                                    <label>
+                                        <%=col.caption%>
+                                    </label>
+                                <%} else {%>
+                                    <%if(col.field.controlType=="text"){%>
+                                        <input type="text" ng-model="<%=col.fieldName%>" class="form-control">
+                                    <%}%>
+                                    
+                                <%}%>
+                                
+                            </div>
+                                
+                        <%})%>
+                <%})%>
+            </div>>
+            <script>
+                (function(scope,params){
+                    
+                    scope.data=params;
+                    scope.$applyAsync();
+                    console.log(params);
+                })
+            </script>
+    </body>
+</html>

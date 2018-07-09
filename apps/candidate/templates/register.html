@@ -1,0 +1,73 @@
+<% extend 'base' %>
+<br class="clearfix">
+<div class="container" style="min-height:500px">
+    
+        <form action="" method="POST" class="form" role="form">
+                <div class="row">
+                
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                <label for="First name"><%- @getAppRes("First name")%></label>
+                        </div>
+                        
+                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                <input type="text" class="form-control" id="firstName" value="<%- @model.data.firstName%>" name="firstName" placeholder="<%- @getAppRes("First name")%>">
+                        </div>
+                    </div>
+                    <div class="row">
+                
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                    <label for="Last name"><%- @getAppRes("Last name")%></label>
+                            </div>
+                            
+                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                    <input type="text" class="form-control" id="lastName" value="<%- @model.data.lastName%>" name="lastName" placeholder="<%- @getAppRes("lastName name")%>">
+                            </div>
+                        </div>
+            <div class="row">
+                
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <label for="username"><%- @getAppRes("Username")%></label>
+                </div>
+                
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <input type="text" class="form-control" id="username" value="<%- @model.data.username%>" name="username" placeholder="<%- @getAppRes("Username")%>">
+                </div>
+            </div>
+            <div class="row">
+                
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <label for="email"><%- @getAppRes("Email")%></label>
+                    </div>
+                    
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                            <input type="email" class="form-control" value="<%- @model.data.email%>"  id="email" name="email" placeholder="<%- @getAppRes("Email")%>">
+                    </div>
+            </div>    
+            <div class="row">
+                
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <label for="password"><%- @getAppRes("Password")%></label>
+                    </div>
+                    
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="<%- @getAppRes("Password")%>">
+                    </div>
+            </div>   
+            
+            <div class="row">
+                
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    
+                    <button type="submit" class="btn btn-primary pull-right"><%- @getAppRes("Register")%></button>
+                    
+                </div>
+                
+            </div>
+            
+        </form>
+            
+</div>
+
+<% block 'body-footer' :%>
+<% include 'common/body.footer' %>
+<% end %>

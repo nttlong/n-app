@@ -1,0 +1,1 @@
+var quicky=require("./quicky")

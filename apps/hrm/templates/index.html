@@ -1,0 +1,36 @@
+<html ng-app="app">
+    <head>
+      <style>
+        *{
+          font-size: 9pt !important;
+        }
+      </style>
+
+        <% include header.html %>
+        <% include script.html %>
+    </head>
+    <body ng-controller="app" ng-cloak="">
+        <div>
+          <% include nav.html %>
+          <div c-template ng-if="$root.currentPage" url="<%=getAppUrl()%>/{{$root.currentPage}}" style="padding:10px">
+
+          </div>
+         </div> <!-- /container -->
+         {{$root.menu}}
+      <script>
+        var app=angular.module("app",["c-ui"]);
+        var ctl=app.controller("app",["$scope",function(scope){
+          scope.$root.menu=JSON.parse('<%-JSON.stringify(model.menu)%>');
+          history_navigator(scope.$root);
+          scope.$root.$history.change(function(data){
+            scope.$root.currentPage=data.page;
+            scope.$root.$applyAsync();
+            
+          });
+          scope.$root.$applyAsync();
+        }]);  
+      </script>
+         
+      
+    </body>
+</html>

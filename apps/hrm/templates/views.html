@@ -1,0 +1,14 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            (function(scope){
+                scope.view_path="<%-model.page%>";
+                console.log(scope);
+            })
+        </script>
+        <%- include(model.page) %>
+    </body>
+</html>

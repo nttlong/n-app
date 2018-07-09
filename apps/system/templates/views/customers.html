@@ -1,0 +1,25 @@
+<div title="List Of customers">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <%model.columns.forEach(function(item){%>
+                    <th><%=item.fieldCaption%></th>
+                <%})%>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="p in data">
+                    <%model.columns.forEach(function(item){%>
+                        <td>{{p.<%=item.fieldName%>}}</td>
+                    <%})%>
+            </tr>
+        </tbody>
+        
+    </table>
+    
+</div>
+<script>
+    (function(scope){
+        
+    })
+</script>

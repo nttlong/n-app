@@ -1,0 +1,29 @@
+<div>
+    
+    <button type="button" class="btn btn-default"
+         ng-click='$root.$dialog($id).url("<%- @getAppUrl('system/user')%>").done()'>
+         <%- @getAppRes("New")%>
+        </button>
+    
+{{data}}
+</div>
+<script>
+    (function(scope){
+        console.log(scope);
+        var ws=ajax().create("<%= @getFullUrl() %>");
+        scope.loadData=function(){
+            ws.call("getListOfUsers")
+            .data({
+                pageIndex:0,
+                pageSize:50
+            })
+            .done(function(res){
+                scope.data=res;
+                scope.$applyAsync();
+                
+            });
+        }
+        scope.loadData();
+        console.log(scope);
+    })
+</script>

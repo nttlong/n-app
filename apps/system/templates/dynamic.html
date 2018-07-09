@@ -1,0 +1,49 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+            <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <%model.columns.forEach(function(item){%>
+                                    <th><%=item.fieldCaption%></th>
+                                <%})%>
+                                <th>
+                                        <input type="button" class="btn btn-default" value="<%=getAppRes('New')%>" ng-click="$root.$dialog($id).url('<%=getAppUrl("dialog/views/"+model.source)%>').done()">
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="p in data">
+                                    <%model.columns.forEach(function(item){%>
+                                        <td>{{p.<%=item.fieldName%>}}</td>
+                                    <%})%>
+                                    <td>
+                                        <input type="button" class="btn btn-default" value="<%=getAppRes('Edit')%>" ng-click="$root.$dialog($id).url('<%=getAppUrl("dialog/views/"+model.source)%>').params(p).done()">
+                                    </td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+                    
+                </div>
+                <script>
+                    (function(scope){
+                        scope.view_path='<%=model.page%>';
+                        ws(scope).api("api/categories.getDataList")
+                        .data({
+                            source:"<%=model.source%>"
+                        }).done(function(error,data){
+                            console.log(data);
+                            scope.data=data;
+                            scope.$applyAsync();
+                        })
+                        
+
+                        
+                    })
+                </script>
+    </body>
+</html>

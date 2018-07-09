@@ -1,0 +1,26 @@
+<html ng-app="app">
+    <head>
+      <style>
+        *{
+          font-size: 9pt !important;
+        }
+      </style>
+
+        <% include header.html %>
+        <% include script.html %>
+    </head>
+    <body ng-controller="app" ng-cloak="">
+        <div>
+          <% include nav.html %>
+          <div c-template ng-if="$root.currentPage" url="<%=getAppUrl()%>/{{$root.currentPage}}" style="padding:10px">
+
+          </div>
+         </div> <!-- /container -->
+      
+      <script>
+        app('<%=getViewPath()%>', '<%-JSON.stringify(model.menu)%>',"<%=getAppUrl('api')%>");
+      </script>
+         
+      
+    </body>
+</html>

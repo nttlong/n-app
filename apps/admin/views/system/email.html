@@ -1,0 +1,61 @@
+<div class="container"  style="max-width:300px">
+        <form action="" method="POST" role="form">
+                <legend><%- @getAppRes("Email settings") %></legend>
+            
+                <div class="form-group">
+                    <label for=""><%- @getAppRes("Server") %></label>
+                    <input type="text" class="form-control" ng-model="data.server" placeholder="<%- @getAppRes("Server") %>">
+                </div>
+                <div class="form-group">
+                        <label for=""><%- @getAppRes("Username") %></label>
+                        <input type="text" class="form-control" ng-model="data.username" placeholder="<%- @getAppRes("Username") %>">
+                </div>
+                <div class="form-group">
+                        <label for=""><%- @getAppRes("Password") %></label>
+                        <input type="password" class="form-control" ng-model="data.password" placeholder="<%- @getAppRes("Password") %>">
+                </div>
+                <div class="form-group">
+                        <label for=""><%- @getAppRes("Port") %></label>
+                        <input type="number" class="form-control" ng-model="data.port" placeholder="<%- @getAppRes("Port") %>">
+                </div>
+                <div class="form-group">
+                        <label for=""><%- @getAppRes("Use SSL") %></label>
+                        <input type="checkbox"  ng-model="data.useSSL" placeholder="<%- @getAppRes("Use SSL") %>">
+                </div>
+                <div class="form-group">
+                        <label for=""><%- @getAppRes("Use defaultCredentials") %></label>
+                        <input type="checkbox"  ng-model="data.useDefaultCredentials" placeholder="<%- @getAppRes("Use defaultCredentials") %>">
+                </div>
+                <div class="form-group">
+                        <label for=""><%- @getAppRes("Email") %></label>
+                        <input type="email" class="form-control" ng-model="data.email" placeholder="<%- @getAppRes("Email") %>">
+                </div>
+                <input type="button" class="btn btn-primary pull-right" ng-click="$root.$dialog($id).params(data).url(urlTestEmail).done()" value="<%- @getAppRes("test") %>"/>
+                <input type="button" class="btn btn-primary pull-right" ng-click="saveData()" value="<%- @getAppRes("update") %>"/>
+               
+            </form>
+</div>
+
+<script>
+    (function(scope){
+        scope.urlTestEmail="<%- @getAppUrl('system/email_testing') %>";
+        var ws=ajax.create("<%- @getFullUrl() %>");
+        scope.loadData=function(){
+            ws.call("getData").done(function(res){
+                scope.data=res;
+                scope.$applyAsync();
+            });
+
+        }
+        scope.saveData=function(){
+            ws.call("saveData")
+            .data(scope.data)
+            .done(function(res){
+                console.log(res);
+            });
+
+        }
+        scope.loadData();
+        
+    });
+</script>

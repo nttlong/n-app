@@ -1,0 +1,17 @@
+<% extend 'base' %>
+<div class="container" style="max-width: 300px">
+    
+    <form action="<%- @getAppUrl('login')%>" method="POST" role="form">
+            <div class="form-group">
+                    <label for="username"><%- @getAppRes("Username")%></label>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="<%- @getAppRes("Enter username")%>" value="<%- @model.data.username %>">
+            </div>
+            <div class="form-group">
+                    <label for="username"><%- @getAppRes("Password")%></label>
+                    <input type="password" class="form-control" name="password" id="username" placeholder="<%- @getAppRes("Enter password")%>">
+            </div>
+        <button type="submit" class="btn btn-primary"><%- @getAppRes("Login")%></button>
+        <a href="<%- @getAppUrl('register')%>"><%- @getAppRes("Register new account") %></a>
+    </form>
+    
+    </div>

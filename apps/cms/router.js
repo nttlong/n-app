@@ -6,7 +6,7 @@ var express = require('express')
 var sync=require("quicky/q-sync");
 router.use('/static',express.static(__dirname+'/static'))
 apps.urls(router)
-.setTemplateDir(__dirname)
+.setDir(__dirname)
 .url("index.html","/",require("./views/index"))
 router.use('/static',express.static(__dirname+'/static'));
 module.exports = router

@@ -1,0 +1,37 @@
+[2018-07-10T20:59:44.524] [ERROR] error - E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension-request.js Error: Error: Failed to load template e:\code\nodejs\quicky-2\apps\cms\views\index.html
+    at Object.sync (E:\code\nodejs\quicky-2\packages\quicky\q-sync\index.js:34:20)
+    at IncomingMessage.req.render (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension-request.js:213:26)
+    at hanlderCls.module.exports [as _handler] (e:\code\nodejs\quicky-2\apps\cms\views\index.js:2:9)
+    at me.url.owner.handler (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:114:35)
+    at Layer.handle [as handle_request] (e:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:95:5)
+    at next (e:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (e:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (e:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:95:5)
+    at e:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (e:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:335:12)
+    at next (e:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (e:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:174:3)
+    at router (e:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:317:13)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:174:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:317:13)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:275:10)
+    at E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js:141:13
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:317:13)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:275:10)
+    at Immediate.<anonymous> (E:\code\nodejs\quicky-2\node_modules\express-session\index.js:489:7)
+    at runCallback (timers.js:676:20)
+    at tryOnImmediate (timers.js:645:5)
+    at processImmediate [as _immediateCallback] (timers.js:617:5)
+

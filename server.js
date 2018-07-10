@@ -17,33 +17,15 @@ q.email.setConfig(
     "email_templates"
 
 )
-// var dbPath="mongodb://sys:123456@172.16.7.63/lv01_lms";
-// qMongo.connect("mongodb://root:123456@localhost/hrm");
 qMongo.connect(cnn);
-// qMongo.connect(conn.main)
-// qMongo.connect("mongodb://sys:123456@172.16.7.63/lv01_lms");
  language.setConfig(cnn,"sys_languages");
-// language.setConfig(conn.language.value,conn.language.collection);
-// app.setTenancyConfig("mongodb://root:123456@localhost/hrm","sys_tenancy");
-// api.connect(conn.api.value,conn.api.collection);
-
 api.connect(cnn,"sys_api_callback_cache");
-// api.connect("mongodb://sys:123456@172.16.7.63/lv01_lms","sys_api_callback_cache")
-// language.setConfig("mongodb://sys:123456@172.16.7.63:27017/lv01_lms","sys_admin_languages");
-//api.connect("mongodb://sys:123456@172.16.7.63:27017/lv01_lms","sys_api_callback_cache");
 app.setSecretKey("sas03udh74327%$63283");
 app.setCacheMode(true);
 app.setCompressMode(false);
 app.sessionCacheUseMemCache(true);
 app.sessionCacheUseMemCache(false);
-
-// app.sessionCacheSetServers([
-//     {server:"localhost",
-//     port:11211}
-// ]);
-// app.setDefaultSchema("q");
-// app.setDefaultTenancy("quick");
-// app.setTenancyConfig("mongodb://root:123456@localhost/hrm","sys_tenancy");
+var port=process.env.PORT || 3000;
 app.load(
     [
         {
@@ -53,8 +35,7 @@ app.load(
 
         },{
             name:"cms",
-            dir:"apps/cms",
-            hostDir:"cms"
+            dir:"apps/cms"
         },
         {
             name:"candidate",
@@ -74,24 +55,6 @@ app.load(
             hostDir:"admin"
 
         },
-        // {
-        //     name:"hrm",
-        //     dir:"apps/hrm",
-        //     // hostDir:"hrm"
-
-        // },
-        // {
-        //     name:"per",
-        //     dir:"apps/performance",
-        //     hostDir:"per"
-        // },{
-        //     name:"admin",
-        //     dir:"apps/admin"
-        // },{
-        //     name:"system",
-        //     hostDir:"system",
-        //     dir:"apps/system"
-        // }
     ]
 ).listen(3000,()=>{
     console.log("app start  at port 3000");

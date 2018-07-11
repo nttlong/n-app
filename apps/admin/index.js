@@ -33,7 +33,7 @@ function authenticate(req,res,next){
     
 }
 function getFileStorage(){
-    return require("path").join(require("quicky/q-apps").getRootDir(),"resources");
+    return require("path").join(require("quicky/q-apps").getRootDir(),"data");
 }
 module.exports={
     router:router,

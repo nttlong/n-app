@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+   <% include "commons/header" %>
+  </head>
+  <body>
+    <% include "body/navbar.html" %>
+    
+    <!-- END header -->
+    
+    <% include "body/home-slider.html" %>
+    <!-- END slider -->
+
+    <% content %>
+    <!-- END section -->
+    
+   
+
+   <% include "body/footer.html" %>
+    <!-- END footer -->
+
+    <!-- loader -->
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
+    <% include "commons/footer.html" %>
+  </body>
+</html>

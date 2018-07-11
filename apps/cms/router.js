@@ -1,12 +1,16 @@
-var apps=require("quicky/q-apps");
-var views=require("./views");
-var express = require('express')
-  , router = express.Router()
+// var apps=require("quicky/q-apps");
+// var views=require("./views");
+// var express = require('express')
+//   , router = express.Router()
 
-var sync=require("quicky/q-sync");
-router.use('/static',express.static(__dirname+'/static'))
-apps.urls(router)
-.setDir(__dirname)
-.url("index.html","/",require("./views/index"))
-router.use('/static',express.static(__dirname+'/static'));
-module.exports = router
+// var sync=require("quicky/q-sync");
+// router.use('/static',express.static(__dirname+'/static'))
+// apps.urls(router)
+// .setDir(__dirname)
+// .url("/","/",require("./views/index"))
+// router.use('/static',express.static(__dirname+'/static'));
+module.exports = require("quicky/q-apps")
+.createAppRoutes(__dirname)
+.url([
+  "/"
+]).router;

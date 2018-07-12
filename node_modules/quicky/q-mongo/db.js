@@ -790,10 +790,14 @@ function _collection(db,schema,name,isNoneModel){
                 if(!updateData.$set){
                     updateData.$set={};
                 }
-                updateData.$set[keys[i]]=data[keys[i]];
+                if(keys[i]!="_id"){
+                    updateData.$set[keys[i]]=data[keys[i]];
+                }
             }
             else {
-                updateData[keys[i]]=data[keys[i]];
+                if(keys[i]!="_id"){
+                    updateData[keys[i]]=data[keys[i]];
+                }
             }
 
         }

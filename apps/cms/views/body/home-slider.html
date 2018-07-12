@@ -1,7 +1,12 @@
 <section class="home-slider owl-carousel">
-    <div class="slider-item" style="background-image: url('<%- @getAppStatic("img/slider-2.jpg")%>');">
+  <% for item in @model.images :%>
+  <%
       
-      <div class="container">
+      img_url=@getAbsUrl()+"/admin/resources/images/"+item.photoId
+   %>
+    <div class="slider-item bk-product" style="background-image: url('<%- img_url %>');">
+      
+      <!-- <div class="container">
         <div class="row slider-text align-items-center justify-content-center text-center">
           <div class="col-md-7 col-sm-12 element-animate">
             <h1>Creating A Brighter Future</h1>
@@ -9,20 +14,29 @@
             <p><a href="#" class="btn btn-primary">Download Now!</a></p>
           </div>
         </div>
-      </div>
+      </div> -->
 
     </div>
+  <% end %>
 
-    <div class="slider-item" style="background-image: url('<%- @getAppStatic("img/slider-1.jpg")%>');">
-      <div class="container">
-        <div class="row slider-text align-items-center">
-          <div class="col-md-8 col-sm-12 element-animate">
-            <h1>Trusted Construction &amp; Development Since 1889</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi unde impedit, necessitatibus, soluta sit quam minima expedita atque corrupti reiciendis.</p>
-          </div>
-        </div>
-      </div>
-      
-    </div>
+   
 
   </section>
+  <script>
+    $(document).ready(function(){
+      
+      function fixSlide(){
+        var windowHeight=$(window).height();
+        $(".slider-item.bk-product").css({
+          height:windowHeight-$('header[role="banner"]').height(),
+          "min-height":windowHeight-$('header[role="banner"]').height(),
+          "max-height":windowHeight-$('header[role="banner"]').height(),
+        });
+      }
+      fixSlide();
+      $(window).resize(function(){
+        console.log("XXX");
+        fixSlide();
+      });
+    })
+  </script>

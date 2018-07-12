@@ -1,0 +1,42 @@
+<section class="section">
+        <div class="container">
+    
+          <div class="row justify-content-center mb-5 element-animate">
+            <div class="col-md-8 text-center">
+              <h2 class="text-uppercase heading border-bottom mb-4"><%- @getAppRes("Sản phẩm")%></h2>
+              <p class="mb-3 lead">
+                    <%- @getAppRes("home.into1","Nơi sản xuất, cung cấp máy chế biến thực phẩm uy tín ở Lâm Đồng. Hiện nay là nơi chuyên sản xuất nồi điện nấu phở, nồi hơi nấu đậu, tủ hấp cơm, máy ép nước mía.")%>
+                </p>
+            </div>
+          </div>
+    
+          <div class="row mb-5">
+
+            <% for item in @model.topProducts :%>
+            <% 
+                img_url=@getAbsUrl()+"/admin/resources/images/"+item.photoId
+            %>
+    
+            <div class="col-lg-4 col-md-6 col-12 mb-3 element-animate">
+              <div class="media d-block media-feature text-center">
+                <span class="flaticon-blueprint icon"></span>
+                <div class="media-body">
+                  <h3 class="mt-0 text-black"><%- item.name%></h3>
+                  <p>
+                      <img src="<%- img_url %>" style="max-height:120px;float:left"/>
+                      <%- item.description %>
+                    </p>
+                  <p><a href="<%- @getAppUrl('product')%>/<%- item.code %>" class="btn btn-outline-primary btn-sm"><%- @getAppRes("Chi tiết") %></a></p>
+                </div>
+              </div>
+            </div>
+    
+           <% end %>
+            
+          </div>
+          <!-- END row -->
+          <div class="row justify-content-center element-animate"> 
+            <div class="col-md-4"><p><a href="<%- @getAppUrl('products')%>" class="btn btn-primary btn-block"><%- @getAppRes("Xem tất cả các sản phẩm") %></a></p></div>
+          </div>
+        </div>
+      </section>

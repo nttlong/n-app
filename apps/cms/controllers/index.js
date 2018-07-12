@@ -8,13 +8,18 @@ module.exports=require("quicky/q-controller")(
                 .project({
                     _id:0,
                     photoId:"main_photo_id",
-                    createdOn:1
+                    createdOn:1,
+                    name:1,
+                    description:1,
+                    code:1
                 });
                 qr.sort({
                     createdOn:-1
                 })
-                var item=qr.toArray();
+                qr.limit(9);
+                var items=qr.toArray();
                 s.setValue("images",items);
+                s.setValue("topProducts",items);
                 d();
 
             }

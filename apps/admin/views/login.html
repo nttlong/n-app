@@ -27,6 +27,15 @@
                   <strong>Title!</strong> <%- @model.error_message %>
                 </div>
               <%end%>
+              <% if @model.error :%>
+                <p>
+                    <div class="error">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <strong></strong> <%- @model.error %>
+                      </div>
+                  
+                </p>
+             <% end %>
               <div>
                 <input type="submit" value="<%- @getAppRes('Log in')%>" class="btn btn-default submit"/>
                 
@@ -45,6 +54,8 @@
 
                 <div class="clearfix"></div>
                 <br />
+               
+
 
                 <!-- <div>
                   <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>

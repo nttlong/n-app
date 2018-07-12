@@ -1,0 +1,4 @@
+[2018-07-12T14:52:45.117] [INFO] info - /home/hcsadmin/code/node_modules/quicky/q-apps/index.js load app:{"name":"example","dir":"apps/example","hostDir":"exp","fullHostDir":"/home/hcsadmin/code/apps/example","_mdl":{}}
+[2018-07-12T14:52:45.118] [INFO] info - /home/hcsadmin/code/node_modules/quicky/q-apps/index.js load app:{"name":"cms","dir":"apps/cms","fullHostDir":"/home/hcsadmin/code/apps/cms","_mdl":{}}
+[2018-07-12T14:52:45.127] [INFO] info - /home/hcsadmin/code/node_modules/quicky/q-apps/index.js load app:{"name":"candidate-admin","dir":"apps/candidate-admin","hostDir":"candidate-admin","fullHostDir":"/home/hcsadmin/code/apps/candidate-admin","_mdl":{}}
+[2018-07-12T14:52:45.128] [INFO] info - /home/hcsadmin/code/node_modules/quicky/q-apps/index.js load app:{"name":"admin","dir":"apps/admin","hostDir":"admin","fullHostDir":"/home/hcsadmin/code/apps/admin","_mdl":{}}

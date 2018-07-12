@@ -17,7 +17,7 @@ module.exports=require("quicky/q-controller")(__filename,function(){
         },
         post:(sender,callback)=>{
             var ret=require("quicky/q-system").login(sender.req.tenancyCode,sender.postData.username,sender.postData.password);
-            if(!ret){
+            if((!ret)||(ret.error)){
                 sender.setValue("username",sender.postData.username);
 
                 sender.setValue("error","Login fail");

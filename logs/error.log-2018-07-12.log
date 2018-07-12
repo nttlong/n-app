@@ -1,0 +1,54 @@
+[2018-07-12T14:52:45.119] [ERROR] error - /home/hcsadmin/code/node_modules/quicky/q-apps/index.js { name: 'candidate',
+  dir: 'apps/candidate',
+  hostDir: 'candidate',
+  fullHostDir: '/home/hcsadmin/code/apps/candidate',
+  _mdl: { router: {} } }
+[2018-07-12T15:02:03.568] [ERROR] error - /home/hcsadmin/code/node_modules/quicky/q-apps/extension-request.js Error: Error: Failed to load template /home/hcsadmin/code/apps/admin/views/signout.html
+    at Object.sync (/home/hcsadmin/code/node_modules/quicky/q-sync/index.js:13:10)
+    at IncomingMessage.req.render (/home/hcsadmin/code/node_modules/quicky/q-apps/extension-request.js:13:25)
+    at Object./home/hcsadmin/code/apps/admin/controllers/signout (/home/hcsadmin/code/node_modules/quicky/q-controller/index.js:13:25)
+    at execHandlerByPath (/home/hcsadmin/code/node_modules/quicky/q-apps/extension.js:13:25)
+    at /home/hcsadmin/code/node_modules/quicky/q-apps/extension.js:13:34
+    at Object.authenticate (/home/hcsadmin/code/apps/admin/index.js:13:3)
+    at owner.handler (/home/hcsadmin/code/node_modules/quicky/q-apps/extension.js:13:45)
+    at Layer.handle [as handle_request] (/home/hcsadmin/code/node_modules/express/lib/router/layer.js:13:3)
+    at next (/home/hcsadmin/code/node_modules/express/lib/router/route.js:13:10)
+    at Route.dispatch (/home/hcsadmin/code/node_modules/express/lib/router/route.js:13:3)
+    at Layer.handle [as handle_request] (/home/hcsadmin/code/node_modules/express/lib/router/layer.js:13:3)
+    at /home/hcsadmin/code/node_modules/express/lib/router/index.js:13:10
+    at Function.process_params (/home/hcsadmin/code/node_modules/express/lib/router/index.js:13:10)
+    at next (/home/hcsadmin/code/node_modules/express/lib/router/index.js:13:10)
+    at Function.handle (/home/hcsadmin/code/node_modules/express/lib/router/index.js:13:3)
+    at router (/home/hcsadmin/code/node_modules/express/lib/router/index.js:13:10)
+    at Layer.handle [as handle_request] (/home/hcsadmin/code/node_modules/express/lib/router/layer.js:13:3)
+    at trim_prefix (/home/hcsadmin/code/node_modules/express/lib/router/index.js:13:10)
+    at /home/hcsadmin/code/node_modules/express/lib/router/index.js:13:3
+    at Function.process_params (/home/hcsadmin/code/node_modules/express/lib/router/index.js:13:10)
+    at next (/home/hcsadmin/code/node_modules/express/lib/router/index.js:13:10)
+    at /home/hcsadmin/code/node_modules/express/lib/router/index.js:13:10
+    at next (/home/hcsadmin/code/node_modules/express/lib/router/index.js:13:10)
+    at Function.handle (/home/hcsadmin/code/node_modules/express/lib/router/index.js:13:3)
+    at router (/home/hcsadmin/code/node_modules/express/lib/router/index.js:13:10)
+    at Layer.handle [as handle_request] (/home/hcsadmin/code/node_modules/express/lib/router/layer.js:13:3)
+    at trim_prefix (/home/hcsadmin/code/node_modules/express/lib/router/index.js:13:10)
+    at /home/hcsadmin/code/node_modules/express/lib/router/index.js:13:3
+    at Function.process_params (/home/hcsadmin/code/node_modules/express/lib/router/index.js:13:10)
+    at next (/home/hcsadmin/code/node_modules/express/lib/router/index.js:13:10)
+    at Function.handle (/home/hcsadmin/code/node_modules/express/lib/router/index.js:13:3)
+    at router (/home/hcsadmin/code/node_modules/express/lib/router/index.js:13:10)
+    at Layer.handle [as handle_request] (/home/hcsadmin/code/node_modules/express/lib/router/layer.js:13:3)
+    at trim_prefix (/home/hcsadmin/code/node_modules/express/lib/router/index.js:13:10)
+    at /home/hcsadmin/code/node_modules/express/lib/router/index.js:13:3
+    at Function.process_params (/home/hcsadmin/code/node_modules/express/lib/router/index.js:13:10)
+    at next (/home/hcsadmin/code/node_modules/express/lib/router/index.js:13:10)
+    at /home/hcsadmin/code/node_modules/quicky/q-apps/index.js:13:10
+    at Layer.handle [as handle_request] (/home/hcsadmin/code/node_modules/express/lib/router/layer.js:13:3)
+    at trim_prefix (/home/hcsadmin/code/node_modules/express/lib/router/index.js:13:10)
+    at /home/hcsadmin/code/node_modules/express/lib/router/index.js:13:3
+    at Function.process_params (/home/hcsadmin/code/node_modules/express/lib/router/index.js:13:10)
+    at next (/home/hcsadmin/code/node_modules/express/lib/router/index.js:13:10)
+    at Immediate.<anonymous> (/home/hcsadmin/code/node_modules/express-session/index.js:13:3)
+    at runCallback (timers.js:13:10)
+    at tryOnImmediate (timers.js:13:3)
+    at processImmediate [as _immediateCallback] (timers.js:13:3)
+

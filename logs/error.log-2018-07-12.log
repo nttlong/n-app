@@ -348,3 +348,214 @@
   hostDir: 'candidate',
   fullHostDir: 'e:\\code\\nodejs\\quicky-2\\apps/candidate',
   _mdl: { router: {} } }
+[2018-07-12T22:11:53.274] [ERROR] error - E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js { name: 'candidate',
+  dir: 'apps/candidate',
+  hostDir: 'candidate',
+  fullHostDir: 'e:\\code\\nodejs\\quicky-2\\apps/candidate',
+  _mdl: { router: {} } }
+[2018-07-12T22:34:57.921] [ERROR] error - E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js { name: 'candidate',
+  dir: 'apps/candidate',
+  hostDir: 'candidate',
+  fullHostDir: 'e:\\code\\nodejs\\quicky-2\\apps/candidate',
+  _mdl: { router: {} } }
+[2018-07-12T22:36:12.830] [ERROR] error - E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js { name: 'candidate',
+  dir: 'apps/candidate',
+  hostDir: 'candidate',
+  fullHostDir: 'e:\\code\\nodejs\\quicky-2\\apps/candidate',
+  _mdl: { router: {} } }
+[2018-07-12T22:36:22.496] [ERROR] error - E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension-request.js Error: Error: Failed to load template e:\code\nodejs\quicky-2\apps\cms\views\contact.html
+    at Object.sync (E:\code\nodejs\quicky-2\packages\quicky\q-sync\index.js:34:20)
+    at IncomingMessage.req.render (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension-request.js:213:26)
+    at Object.module.exports [as e:\code\nodejs\quicky-2\apps\cms\controllers\contact] (E:\code\nodejs\quicky-2\packages\quicky\q-controller\index.js:254:25)
+    at execHandlerByPath (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:42:25)
+    at me.url.owner.handler (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:111:29)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:95:5)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:174:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:317:13)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:174:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:317:13)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:275:10)
+    at E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js:141:13
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:317:13)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:275:10)
+    at Immediate.<anonymous> (E:\code\nodejs\quicky-2\node_modules\express-session\index.js:489:7)
+    at runCallback (timers.js:676:20)
+    at tryOnImmediate (timers.js:645:5)
+    at processImmediate [as _immediateCallback] (timers.js:617:5)
+
+[2018-07-12T22:36:59.282] [ERROR] error - E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension-request.js Error: TypeError: Cannot read property 'length' of undefined in e:\code\nodejs\quicky-2\apps\cms\views\body\home-slider.html on line 2
+    at Object.sync (E:\code\nodejs\quicky-2\packages\quicky\q-sync\index.js:18:10)
+    at IncomingMessage.req.render (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension-request.js:18:25)
+    at Object.module.exports [as e:\code\nodejs\quicky-2\apps\cms\controllers\contact] (E:\code\nodejs\quicky-2\packages\quicky\q-controller\index.js:18:25)
+    at execHandlerByPath (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:18:25)
+    at me.url.owner.handler (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:18:25)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:18:3)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:18:10)
+    at Route.dispatch (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:18:3)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:18:3)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:18:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:18:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js:18:10
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:18:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at Immediate.<anonymous> (E:\code\nodejs\quicky-2\node_modules\express-session\index.js:18:3)
+    at runCallback (timers.js:18:10)
+    at tryOnImmediate (timers.js:18:3)
+    at processImmediate [as _immediateCallback] (timers.js:18:3)
+
+[2018-07-12T22:43:35.792] [ERROR] error - E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension-request.js Error: [stdin]:7:463: error: invalid regular expression flags p in e:\code\nodejs\quicky-2\apps\cms\views\contact.html
+'') + ((@getRes("content","Để được sự ủng hộ lâu dài của quý khách hàng, Máy Chế Biến Thực Phẩm Nguyên Hùng luôn nỗ lực và lắng nghe những phản hồi quý báu của khách hàng để có những chính sách tiếp đón và chế độ phục vụ sau bán hàng được tốt nhất.")                </h2>              <p class="mb-3 lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi unde impedit, necessitatibus, soluta sit quam minima expedita atque corrupti reiciendis.</p>              <p><a href="works.html" class="btn btn-primary">View All Works</a></p>            </div>          </div>          <div class="row no-gutters">            <div class="col-md-4 element-animate">              <a href="works-single.html" class="link-thumbnail">                <h3>Wood Polishing</h3>                <span class="ion-plus icon"></span>                <img src="img/work_thumb_1.jpg" alt="Image placeholder" class="img-fluid">              </a>            </div>            <div class="col-md-4 element-animate">              <a href="works-single.html" class="link-thumbnail">                <h3>General Construction Building</h3>                <span class="ion-plus icon"></span>                <img src="img/work_thumb_2.jpg" alt="Image placeholder" class="img-fluid">              </a>            </div>            <div class="col-md-4 element-animate">              <a href="works-single.html" class="link-thumbnail">                <h3>House Renovation</h3>                <span class="ion-plus icon"></span>                <img src="img/work_thumb_3.jpg" alt="Image placeholder" class="img-fluid">              </a>            </div>          </div>        </div>      </section><div class="container" style="max-width:300px">        <form action="" method="POST" class="form-horizontal" role="form">                <div class="form-group">                    <div class="col-sm-10 col-sm-offset-2">                        <button type="submit" class="btn btn-primary">Submit</button>                    </div>                </div>        </form></div>) ? '') + ''
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ^
+    at Object.sync (E:\code\nodejs\quicky-2\packages\quicky\q-sync\index.js:15:10)
+    at IncomingMessage.req.render (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension-request.js:15:25)
+    at Object.module.exports [as e:\code\nodejs\quicky-2\apps\cms\controllers\contact] (E:\code\nodejs\quicky-2\packages\quicky\q-controller\index.js:15:25)
+    at execHandlerByPath (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:15:25)
+    at me.url.owner.handler (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:15:25)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:15:3)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:15:10)
+    at Route.dispatch (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:15:3)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:15:3)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:15:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:15:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js:15:10
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:15:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at Immediate.<anonymous> (E:\code\nodejs\quicky-2\node_modules\express-session\index.js:15:3)
+    at runCallback (timers.js:15:10)
+    at tryOnImmediate (timers.js:15:3)
+    at processImmediate [as _immediateCallback] (timers.js:15:3)
+
+[2018-07-12T22:44:38.947] [ERROR] error - E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension-request.js Error: [stdin]:7:466: error: invalid regular expression flags p in e:\code\nodejs\quicky-2\apps\cms\views\contact.html
+'') + ((@getAppRes("content","Để được sự ủng hộ lâu dài của quý khách hàng, Máy Chế Biến Thực Phẩm Nguyên Hùng luôn nỗ lực và lắng nghe những phản hồi quý báu của khách hàng để có những chính sách tiếp đón và chế độ phục vụ sau bán hàng được tốt nhất.")                </h2>              <p class="mb-3 lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi unde impedit, necessitatibus, soluta sit quam minima expedita atque corrupti reiciendis.</p>              <p><a href="works.html" class="btn btn-primary">View All Works</a></p>            </div>          </div>          <div class="row no-gutters">            <div class="col-md-4 element-animate">              <a href="works-single.html" class="link-thumbnail">                <h3>Wood Polishing</h3>                <span class="ion-plus icon"></span>                <img src="img/work_thumb_1.jpg" alt="Image placeholder" class="img-fluid">              </a>            </div>            <div class="col-md-4 element-animate">              <a href="works-single.html" class="link-thumbnail">                <h3>General Construction Building</h3>                <span class="ion-plus icon"></span>                <img src="img/work_thumb_2.jpg" alt="Image placeholder" class="img-fluid">              </a>            </div>            <div class="col-md-4 element-animate">              <a href="works-single.html" class="link-thumbnail">                <h3>House Renovation</h3>                <span class="ion-plus icon"></span>                <img src="img/work_thumb_3.jpg" alt="Image placeholder" class="img-fluid">              </a>            </div>          </div>        </div>      </section><div class="container" style="max-width:300px">        <form action="" method="POST" class="form-horizontal" role="form">                <div class="form-group">                    <div class="col-sm-10 col-sm-offset-2">                        <button type="submit" class="btn btn-primary">Submit</button>                    </div>                </div>        </form></div>) ? '') + ''
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^
+    at Object.sync (E:\code\nodejs\quicky-2\packages\quicky\q-sync\index.js:15:10)
+    at IncomingMessage.req.render (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension-request.js:15:25)
+    at Object.module.exports [as e:\code\nodejs\quicky-2\apps\cms\controllers\contact] (E:\code\nodejs\quicky-2\packages\quicky\q-controller\index.js:15:25)
+    at execHandlerByPath (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:15:25)
+    at me.url.owner.handler (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:15:25)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:15:3)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:15:10)
+    at Route.dispatch (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:15:3)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:15:3)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:15:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:15:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js:15:10
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:15:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at Immediate.<anonymous> (E:\code\nodejs\quicky-2\node_modules\express-session\index.js:15:3)
+    at runCallback (timers.js:15:10)
+    at tryOnImmediate (timers.js:15:3)
+    at processImmediate [as _immediateCallback] (timers.js:15:3)
+
+[2018-07-12T22:45:36.737] [ERROR] error - E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension-request.js Error: [stdin]:7:468: error: invalid regular expression flags p in e:\code\nodejs\quicky-2\apps\cms\views\contact.html
+'') + ((@getRes("main-content","Để được sự ủng hộ lâu dài của quý khách hàng, Máy Chế Biến Thực Phẩm Nguyên Hùng luôn nỗ lực và lắng nghe những phản hồi quý báu của khách hàng để có những chính sách tiếp đón và chế độ phục vụ sau bán hàng được tốt nhất.")                </h2>              <p class="mb-3 lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi unde impedit, necessitatibus, soluta sit quam minima expedita atque corrupti reiciendis.</p>              <p><a href="works.html" class="btn btn-primary">View All Works</a></p>            </div>          </div>          <div class="row no-gutters">            <div class="col-md-4 element-animate">              <a href="works-single.html" class="link-thumbnail">                <h3>Wood Polishing</h3>                <span class="ion-plus icon"></span>                <img src="img/work_thumb_1.jpg" alt="Image placeholder" class="img-fluid">              </a>            </div>            <div class="col-md-4 element-animate">              <a href="works-single.html" class="link-thumbnail">                <h3>General Construction Building</h3>                <span class="ion-plus icon"></span>                <img src="img/work_thumb_2.jpg" alt="Image placeholder" class="img-fluid">              </a>            </div>            <div class="col-md-4 element-animate">              <a href="works-single.html" class="link-thumbnail">                <h3>House Renovation</h3>                <span class="ion-plus icon"></span>                <img src="img/work_thumb_3.jpg" alt="Image placeholder" class="img-fluid">              </a>            </div>          </div>        </div>      </section><div class="container" style="max-width:300px">        <form action="" method="POST" class="form-horizontal" role="form">                <div class="form-group">                    <div class="col-sm-10 col-sm-offset-2">                        <button type="submit" class="btn btn-primary">Submit</button>                    </div>                </div>        </form></div>) ? '') + ''
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ^
+    at Object.sync (E:\code\nodejs\quicky-2\packages\quicky\q-sync\index.js:15:10)
+    at IncomingMessage.req.render (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension-request.js:15:25)
+    at Object.module.exports [as e:\code\nodejs\quicky-2\apps\cms\controllers\contact] (E:\code\nodejs\quicky-2\packages\quicky\q-controller\index.js:15:25)
+    at execHandlerByPath (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:15:25)
+    at me.url.owner.handler (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:15:25)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:15:3)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:15:10)
+    at Route.dispatch (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:15:3)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:15:3)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:15:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:15:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js:15:10
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:15:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:15:10)
+    at Immediate.<anonymous> (E:\code\nodejs\quicky-2\node_modules\express-session\index.js:15:3)
+    at runCallback (timers.js:15:10)
+    at tryOnImmediate (timers.js:15:3)
+    at processImmediate [as _immediateCallback] (timers.js:15:3)
+

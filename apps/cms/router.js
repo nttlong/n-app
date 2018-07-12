@@ -12,5 +12,9 @@
 module.exports = require("quicky/q-apps")
 .createAppRoutes(__dirname)
 .url([
-  "/"
+  "/",
+  "/contact",
+  "/services",
+  "/about"
+
 ]).router;

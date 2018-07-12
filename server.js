@@ -7,8 +7,8 @@ var q=require("quicky")
 var app=q.apps;
 var api=q.api;
 var cnn1="mongodb://nttlong:nttlong123456@ds129321.mlab.com:29321/hrm";
-var cnn2="mongodb://root:123456@localhost/hrm";
-var cnn="mongodb://sys:123456@172.16.7.63:27017/lv01_lms";
+var cnn="mongodb://root:123456@localhost/hrm";
+var cnn2="mongodb://sys:123456@172.16.7.63:27017/lv01_lms";
 var language=q.language;
 var qMongo=q.mongo;
 q.email.setConfig(

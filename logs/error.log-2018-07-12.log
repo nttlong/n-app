@@ -52,3 +52,8 @@
     at tryOnImmediate (timers.js:13:3)
     at processImmediate [as _immediateCallback] (timers.js:13:3)
 
+[2018-07-12T19:58:42.191] [ERROR] error - E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js { name: 'candidate',
+  dir: 'apps/candidate',
+  hostDir: 'candidate',
+  fullHostDir: 'e:\\code\\nodejs\\quicky-2\\apps/candidate',
+  _mdl: { router: {} } }

@@ -245,8 +245,8 @@ function _aggregate(owner){
             "{<field name>:1 or -1},..{<field name n>:1 or -1}"));
         }
         me.currentSelectedFields=me.currentSelectedFields||M.model(me.owner.collectionName).getFieldsAsArray();
-        fields.forEach(function(ele){
-            me.checkField(Object.keys(ele)[0]);
+        Object.keys(fields).forEach(function(key){
+            me.checkField(key);
         });
         me._pipe.push({
             $sort:fields

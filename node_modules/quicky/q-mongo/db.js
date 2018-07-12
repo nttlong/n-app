@@ -745,7 +745,8 @@ function _collection(db,schema,name,isNoneModel){
         ret=mr.makesureData(ret);
         return ret;
     }
-    me.updateOne=function(data,expr,params,cb){
+    me.updateOne=function(data,expr,params,callback){
+       return sync.exec(function(cb){
         if((!(params instanceof Array))&&
         (!(params instanceof Date))&&
         (typeof params!=="object")){
@@ -827,15 +828,10 @@ function _collection(db,schema,name,isNoneModel){
             }
 
         });
+        },callback,__filename);
     }
     
-    me.updateOneSync=function(data,expr,params){
-        function run(cb){
-            me.updateOne(data,expr,params,cb)
-        }
-        var ret=sync.sync(run,[]);
-        return ret;
-    }
+    
     me.updateMany=function(data,expr,params,callback){
         sync.exec(function(cb){
 

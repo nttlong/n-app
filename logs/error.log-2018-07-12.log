@@ -313,3 +313,28 @@
     at tryOnImmediate (timers.js:24:3)
     at processImmediate [as _immediateCallback] (timers.js:24:3)
 
+[2018-07-12T21:23:57.748] [ERROR] error - E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js { name: 'candidate',
+  dir: 'apps/candidate',
+  hostDir: 'candidate',
+  fullHostDir: 'e:\\code\\nodejs\\quicky-2\\apps/candidate',
+  _mdl: { router: {} } }
+[2018-07-12T21:51:05.679] [ERROR] error - E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js { name: 'candidate',
+  dir: 'apps/candidate',
+  hostDir: 'candidate',
+  fullHostDir: 'e:\\code\\nodejs\\quicky-2\\apps/candidate',
+  _mdl: { router: {} } }
+[2018-07-12T21:54:00.835] [ERROR] error - E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js { name: 'candidate',
+  dir: 'apps/candidate',
+  hostDir: 'candidate',
+  fullHostDir: 'e:\\code\\nodejs\\quicky-2\\apps/candidate',
+  _mdl: { router: {} } }
+[2018-07-12T21:56:30.863] [ERROR] error - E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js { name: 'candidate',
+  dir: 'apps/candidate',
+  hostDir: 'candidate',
+  fullHostDir: 'e:\\code\\nodejs\\quicky-2\\apps/candidate',
+  _mdl: { router: {} } }
+[2018-07-12T22:01:58.476] [ERROR] error - E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js { name: 'candidate',
+  dir: 'apps/candidate',
+  hostDir: 'candidate',
+  fullHostDir: 'e:\\code\\nodejs\\quicky-2\\apps/candidate',
+  _mdl: { router: {} } }

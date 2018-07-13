@@ -1,5 +1,5 @@
 <header role="banner">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
       <div class="container">
         <a class="navbar-brand" href="<%- @getAppUrl()%>"><%- @getAppRes("site-name","Inox Nguyên Hùng") %></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,16 +9,16 @@
         <div class="collapse navbar-collapse" id="navbarsExample05">
           <ul class="navbar-nav mr-auto pl-lg-5 pl-0">
             <li class="nav-item">
-              <a class="nav-link active" href="<%- @getAppUrl()%>"><%- @getAppRes("menu.home","Trang chủ") %></a>
+              <a class="nav-link active" href="<%- @getAppUrl('intro')%>"><%- @getAppRes("menu.intro","Giới thiệu") %></a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="<%- @getAppUrl('services')%>" id="dropdown04"  aria-haspopup="true" aria-expanded="false"><%- @getAppRes("menu.services","Dịch vụ") %></a>
-            </li>
-            <li class="nav-item">
+            </li> -->
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="<%- @getAppUrl('about')%>" id="dropdown04"  aria-haspopup="true" aria-expanded="false"><%- @getAppRes("menu.about","Giới thiệu") %></a>
-            </li>
+            </li> -->
             <li class="nav-item">
-                <a class="nav-link" href="<%- @getAppUrl('contact')%>" id="dropdown04"  aria-haspopup="true" aria-expanded="false"><%- @getAppRes("menu.contact","Liên hệ") %></a>
+                <a class="nav-link" href="<%- @getAppUrl('contact')%>" id="dropdown04"  aria-haspopup="true" aria-expanded="false"><%- @getAppRes("menu.feedback","Góp ý") %></a>
             </li>
           </ul>
           

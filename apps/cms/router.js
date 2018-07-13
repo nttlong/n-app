@@ -14,7 +14,8 @@ module.exports = require("quicky/q-apps")
 .url([
   "/",
   "/contact",
-  "/services",
-  "/about"
+  "/feedback",
+  "/about",
+  "/intro"
 
 ]).router;

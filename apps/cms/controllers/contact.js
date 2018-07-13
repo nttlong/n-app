@@ -12,9 +12,8 @@ module.exports=require("quicky/q-controller")(
                     var ret=contacts(s.schema).insertOne(data);
                     s.setValue(data);
                     var txtFormat=require("quicky/q-text-format")
-                    var msg=txtFormat(s.req.getAppRes("contact.success",`
-                    Cảm ơn quý khách đã cung cấp cho chúng tôi thông tin liên hệ của quý khách.
-                    Chúng tôi sẽ liên hệ với quý khác theo địa chỉ email {0} ngay khi chúng tôi có thể
+                    var msg=txtFormat(s.req.getAppRes("feedback.success",`
+                    Cảm ơn quý vị thực hiện thao tác này. Chúng tôi sẽ liên hệ với quý vị ngay khi nhận được thông tin này
                     `),data.email)
                     s.setValue("success",msg.trim().replace(/\n|\r/g, ""));
                     d();

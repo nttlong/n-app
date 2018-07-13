@@ -8,5 +8,6 @@ module.exports={
     model:DB.model,
     connect:DB.connect,
     filter:E.filter,
-    selector:E.selector
+    selector:E.selector,
+    createView:DB.createView
 }

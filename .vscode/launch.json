@@ -20,7 +20,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/packages/quicky/q-mongo/test.js"
+            "program": "${workspaceFolder}/server.js"
         }
     ]
 }

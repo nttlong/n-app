@@ -1,0 +1,43 @@
+[2018-07-13T19:45:38.089] [ERROR] error - E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js { name: 'candidate',
+  dir: 'apps/candidate',
+  hostDir: 'candidate',
+  fullHostDir: 'e:\\code\\nodejs\\quicky-2\\apps/candidate',
+  _mdl: { router: {} } }
+[2018-07-13T20:00:50.496] [ERROR] error - E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension-request.js Error: ReferenceError: getAppRes is not defined in e:\code\nodejs\quicky-2\apps\cms\views\contact.html on line 21
+    at Object.sync (E:\code\nodejs\quicky-2\packages\quicky\q-sync\index.js:18:10)
+    at IncomingMessage.req.render (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension-request.js:18:25)
+    at Object.module.exports [as e:\code\nodejs\quicky-2\apps\cms\controllers\contact] (E:\code\nodejs\quicky-2\packages\quicky\q-controller\index.js:18:25)
+    at execHandlerByPath (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:18:25)
+    at me.url.owner.handler (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:18:25)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:18:3)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:18:10)
+    at Route.dispatch (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:18:3)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:18:3)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:18:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:18:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js:18:10
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:18:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:18:10)
+    at Immediate.<anonymous> (E:\code\nodejs\quicky-2\node_modules\express-session\index.js:18:3)
+    at runCallback (timers.js:18:10)
+    at tryOnImmediate (timers.js:18:3)
+    at processImmediate [as _immediateCallback] (timers.js:18:3)
+

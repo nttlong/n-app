@@ -9,6 +9,7 @@ const _update_functions=",$pop,$unset$addToSet,$pull,$pullAll,$each,$position,$s
 
 function _aggregate(owner){
     var me=this;
+    me.__objClassName="_aggregate"
     me.owner=owner;
     me._pipe=[];
     me.currentSelectedFields;
@@ -1102,10 +1103,15 @@ function connect(url){
     return  global["__1-mongo-database-connection__"][url];
     
 }
+function createView(aggregateObject,schema,viewName){
+
+
+}
 module.exports={
     collection:collection,
     query:query,
     connect:connect,
     model:M.model,
-    getModel:M.getModel
+    getModel:M.getModel,
+    createView:createView
 }

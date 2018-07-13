@@ -5,3 +5,11 @@
 .owl-dots{
     display: none !important;
 }
+@media not screen and (max-width: 600px) {
+    .bk-contact {
+        background-image: url("img/img-01.png");
+        background-position: left top;
+        background-repeat: no-repeat;
+        
+    }
+}

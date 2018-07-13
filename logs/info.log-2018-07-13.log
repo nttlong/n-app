@@ -1,0 +1,4 @@
+[2018-07-13T19:45:38.075] [INFO] info - E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js load app:{"name":"example","dir":"apps/example","hostDir":"exp","fullHostDir":"e:\\code\\nodejs\\quicky-2\\apps/example","_mdl":{}}
+[2018-07-13T19:45:38.079] [INFO] info - E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js load app:{"name":"cms","dir":"apps/cms","fullHostDir":"e:\\code\\nodejs\\quicky-2\\apps/cms","_mdl":{}}
+[2018-07-13T19:45:38.131] [INFO] info - E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js load app:{"name":"candidate-admin","dir":"apps/candidate-admin","hostDir":"candidate-admin","fullHostDir":"e:\\code\\nodejs\\quicky-2\\apps/candidate-admin","_mdl":{}}
+[2018-07-13T19:45:38.143] [INFO] info - E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js load app:{"name":"admin","dir":"apps/admin","hostDir":"admin","fullHostDir":"e:\\code\\nodejs\\quicky-2\\apps/admin","_mdl":{}}

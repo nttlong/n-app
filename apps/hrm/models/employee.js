@@ -47,10 +47,12 @@ qMongo.model("hrm.employees","hrm.base").fields({
     ]
 ).onBeforeInsert((data,sender)=>{
     if(data.Department && data.Department.Code){
-        var item=department(sender.schema).findOne("code=={0}",[data.Department.Code]);
+        var item=department(sender.schema).findOne("Code=={0}",[data.Department.Code]);
         console.log(item);
         if(!item){
-            
+            if(item==null){
+                throw(new Error(`Departent code ${data.Department.Code} was not found in department `))
+            }
         }
     }
     console.log(data)

@@ -4,6 +4,12 @@ const Mng=require("mongodb")
 const E=require("./expr");
 const M=require("./extens_helper");
 const F=require("./fieldExtractor");
+const data_modified_error="data_modified_error";
+var errors={
+    missing:"missing",
+    invalid_data_type:"invalid_data_type",
+    duplicate_data:"duplicate_data"
+}
 var _db;
 const _update_functions=",$pop,$unset$addToSet,$pull,$pullAll,$each,$position,$slice,$sort,$push,$inc";
 
@@ -13,6 +19,9 @@ function _aggregate(owner){
     me.owner=owner;
     me._pipe=[];
     me.currentSelectedFields;
+    /**
+     * get current selected fields of aggregate
+     */
     me.getSelectedFields=function(){
         if(me.owner._noneModel) return [];
         if(!me.currentSelectedFields){
@@ -25,6 +34,10 @@ function _aggregate(owner){
         }
         return me.currentSelectedFields;
     }
+    /**
+     * get text that show all currentt selected fields of aggregate
+     * @param {tab indent} tabs 
+     */
     me.describeListOfField=function(tabs){
         var ret="\r\n";
         me.getSelectedFields().forEach(function(ele){
@@ -33,6 +46,11 @@ function _aggregate(owner){
         return ret;
 
     }
+    /**
+     * get text that show list of field in list params
+     * @param {*} tabs 
+     * @param {*} list 
+     */
     me.descrideArray=function(tabs,list){
         var ret="\r\n";
         list.forEach(function(ele){
@@ -46,6 +64,10 @@ function _aggregate(owner){
         })
         return ret;
     }
+    /**
+     * get all child fields of field info
+     * @param {*} field 
+     */
     me.getChildFields=function(field){
         if(me.owner._noneModel) return [];
         var ret= me.owner.model.getFieldsAsArray().filter(function(x){
@@ -54,6 +76,10 @@ function _aggregate(owner){
         });
         return ret;
     }
+    /**
+     * Find a field in current selected fields
+     * @param {*} field 
+     */
     me.findField=function(field){
         var fields=me.getSelectedFields();
         for(var i=0;i<fields.length;i++){
@@ -71,13 +97,41 @@ function _aggregate(owner){
             return undefined;
         }
     }
+    /**
+     * Check field is in current selected fields
+     * @param {} field 
+     */
     me.checkField=function(field){
         var findItem=me.findField(field);
         if(!findItem){
             throw(new Error("\r\n\t\tWhat is '"+field+"'?.\r\n\t\t'"+field+"' is not in below list:\r\n"+me.descrideArray("\t\t\t\t",me.getSelectedFields())));
         }
     }
+    /**
+     * mongodb aggregate project
+     * @param {*} selectors 
+     * @param {*} params 
+     */
     me.project=function(selectors,params){
+        var args=arguments;
+        if(args.length>2){
+            var _selectors={};
+            for(var i=0;i<args.length;i++){
+                if(typeof args[i]==="string"){
+                    _selectors[args[i]]=1;
+                }
+                else if (typeof args[i]==="object") {
+                    _selectors[Object.keys[args[i]]]=args[i][Object.keys[args[i]][0]];
+
+                } 
+                else if(args[i] instanceof Array){
+                    params=args[i];
+
+                }
+            }
+            selectors=_selectors;
+        }
+       
         var checkFields=me.getSelectedFields();
         if(!selectors){
             throw(new Error(("Are you confuse?\r\nYou can select in bellow list:\r\n"+me.describeListOfField("\t\t\t"))));
@@ -129,6 +183,11 @@ function _aggregate(owner){
         me._pipe.push($project);
         return me;
     }
+    /**
+     * mongodb match
+     * @param {*} expr 
+     * @param {*} params 
+     */
     me.match=function(expr,params){
         if(!(params instanceof Array)){
             params=[params];
@@ -151,6 +210,13 @@ function _aggregate(owner){
         });
         return me;
     }
+    /**
+     * mongodb lookup aggregate
+     * @param {} fromSource 
+     * @param {*} foreignField 
+     * @param {*} localField 
+     * @param {*} alias 
+     */
     me.lookup=function(fromSource,foreignField,localField,alias){
         if(!fromSource){
             throw(new Error("\r\nAre you confuse?\r\n"+
@@ -225,8 +291,27 @@ function _aggregate(owner){
         });
         return me;
     }
-    me.unwind=function(field){
-        
+    /**
+     * Mongodb unwind aggregate
+     * @param {*} field 
+     * @param {*} NoPreserveNullAndEmptyArrays 
+     */
+    me.unwind=function(field,NoPreserveNullAndEmptyArrays){
+        var args=arguments;
+        if((args.length>1)&&(typeof args[1]==="string")){
+            if(typeof args[args.length-1]==="boolean"){
+                for(var i=0;i<args.length-1;i++){
+                    me.unwind(key,args[args.length-1]);
+                }
+                return me;
+            }
+            else {
+                args.forEach(key=>{
+                    me.unwind(key);
+                });
+                return me;
+            }
+        }
         me.checkField(field);
         if(field[0]!="$"){
             field="$"+field;
@@ -234,12 +319,16 @@ function _aggregate(owner){
         me._pipe.push({
             "$unwind":{
                 path:field,
-                preserveNullAndEmptyArrays:true
+                preserveNullAndEmptyArrays:!NoPreserveNullAndEmptyArrays
             }
         });
         return me;
 
     }
+    /**
+     * mongodb sort aggregate
+     * @param {} fields 
+     */
     me.sort=function(fields){
         if(!fields){
             throw(new Error("\r\nAre you confuse?\r\n\t\tThe parameters of sort look like that:\r\m\t\t"+
@@ -470,6 +559,9 @@ function _collection(db,schema,name,isNoneModel){
         })
         return ret;
     }
+    /**
+     * get mongodb collection
+     */
     me.getCollection=function(){
         
         var ret= me.db.collection(me.collectionName);
@@ -666,6 +758,18 @@ function _collection(db,schema,name,isNoneModel){
     }
   
     me.find=function(expr,params,callback){
+        if(expr===undefined){
+            return sync.exec(function(cb){
+                me.db.collection(me.collectionName).find((error,item)=>{
+                    if(error){
+                        cb(error)
+                    }
+                    else {
+                        cb(null,item);
+                    }
+                });
+            },callback)
+        }
         return sync.exec(function(cb){
             if((typeof params!=="object") &&
             (typeof params!=="array")){
@@ -772,20 +876,30 @@ function _collection(db,schema,name,isNoneModel){
         var retInvalidRequireFields=me.model.validateRequireData(data,true);
         if(retInvalidRequireFields.length>0){
             cb(null,{
-                error:{
-                    code:"missing",
-                    fields:retInvalidRequireFields
-                }
+                error:require("./exception")(
+                    data_modified_error,
+                    `Update data to ${me.schema}.${me.collectionName} require data fields, see fields in this error`,
+                    errors.missing,
+                    retInvalidRequireFields,
+                    me.schema,
+                    me.collectionName,
+                    ""
+                )
             });
             return;
         }
         var retInvalidFieldTypes=me.model.validateDataType(data);
-        if(retInvalidRequireFields.length>0){
+        if(retInvalidFieldTypes.length>0){
             cb(null,{
-                error:{
-                    code:"invalidDataType",
-                    fields:retInvalidRequireFields
-                }
+                error:require("./exception")(
+                    data_modified_error,
+                    `Update data to ${me.schema}.${me.collectionName} with invalid data type fields, see fields in this error`,
+                    errors.invalid_data_type,
+                    retInvalidFieldTypes,
+                    me.schema,
+                    me.collectionName,
+                    ""
+                )
             });
             return;
         }
@@ -795,7 +909,7 @@ function _collection(db,schema,name,isNoneModel){
                     me.descrideArray("\t\t",unknownFields)+"\r\n"+
                     "\t is not in bellow list:\r\n"+
                     me.descrideArray("\t\t",me.model.getFieldsAsArray())+"\r\n";
-            throw(new Error(msg));
+            require("../q-exception").next(new Error(msg),__filename);
         }
         var updateData={};
         var keys=Object.keys(data);
@@ -825,10 +939,15 @@ function _collection(db,schema,name,isNoneModel){
                     retErrorFields.push(key);
                 });
                 cb({
-                    error:{
-                        code:"duplicate",
-                        fields:retErrorFields
-                    },
+                    error:require("./exception")(
+                        data_modified_error,
+                        `Update data to ${me.schema}.${me.collectionName} with the values is existing, see fields in this error`,
+                        errors.duplicate_data,
+                        retErrorFields,
+                        me.schema,
+                        me.collectionName,
+                        ""
+                    ),
                     data:data
                 });
                 return;
@@ -848,8 +967,6 @@ function _collection(db,schema,name,isNoneModel){
         });
         },callback,__filename);
     }
-    
-    
     me.updateMany=function(data,expr,params,callback){
         sync.exec(function(cb){
 
@@ -864,20 +981,30 @@ function _collection(db,schema,name,isNoneModel){
                 var retInvalidRequireFields=me.model.validateRequireData(data,true);
                 if(retInvalidRequireFields.length>0){
                     cb(null,{
-                        error:{
-                            code:"missing",
-                            fields:retInvalidRequireFields
-                        }
+                        error:require("./exception")(
+                            data_modified_error,
+                            `Update data to ${me.schema}.${me.collectionName} require data fields, see fields in this error`,
+                            errors.missing,
+                            retInvalidRequireFields,
+                            me.schema,
+                            me.collectionName,
+                            ""
+                        )
                     });
                     return;
                 }
                 var retInvalidFieldTypes=me.model.validateDataType(data);
-                if(retInvalidRequireFields.length>0){
+                if(retInvalidFieldTypes.length>0){
                     cb(null,{
-                        error:{
-                            code:"invalidDataType",
-                            fields:retInvalidRequireFields
-                        }
+                        error:require("./exception")(
+                            data_modified_error,
+                            `Update data to ${me.schema}.${me.collectionName} with invalid data type fields, see fields in this error`,
+                            errors.invalid_data_type,
+                            retInvalidFieldTypes,
+                            me.schema,
+                            me.collectionName,
+                            ""
+                        )
                     });
                     return;
                 }
@@ -887,7 +1014,7 @@ function _collection(db,schema,name,isNoneModel){
                             me.descrideArray("\t\t",unknownFields)+"\r\n"+
                             "\t is not in bellow list:\r\n"+
                             me.descrideArray("\t\t",me.model.getFieldsAsArray())+"\r\n";
-                    throw(new Error(msg));
+                    require("../q-exception").next(new Error(msg),__filename);
                 }
                 me.getCollection().updateMany(filter,{$set: data},function(err,ret){
                     if(err && err.code===11000){
@@ -898,10 +1025,15 @@ function _collection(db,schema,name,isNoneModel){
                             retErrorFields.push(key);
                         });
                         cb({
-                            error:{
-                                code:"duplicate",
-                                fields:retErrorFields
-                            },
+                            error:require("./exception")(
+                                data_modified_error,
+                                `Update data to ${me.schema}.${me.collectionName} with the values is existing, see fields in this error`,
+                                errors.duplicate_data,
+                                retErrorFields,
+                                me.schema,
+                                me.collectionName,
+                                ""
+                            ),
                             data:data
                         });
                         return;
@@ -995,25 +1127,33 @@ function _collection(db,schema,name,isNoneModel){
                 var retInvalidRequireFields=me.model.validateRequireData(data);
                 if(retInvalidRequireFields.length>0){
                     cb(null,{
-                        error:{
-                            code:"missing",
-                            fields:retInvalidRequireFields,
-                            ex:new Error("\r\n Missing fields:\r\n"+me.descrideArray("\t\t",retInvalidRequireFields)+" in model '"+me.model.name+"'\r\n"+
-                            me.descrideArray("\t\t",me.model.getFieldsAsArray()))
-                        }
+                        error:require("./exception")(
+                            data_modified_error,
+                            `Insert data to ${me.schema}.${me.collectionName} require data fields, see fields in this error`,
+                            errors.missing,
+                            retInvalidRequireFields,
+                            me.schema,
+                            me.collectionName,
+                            ""
+                        )
                     });
                     return;
                 }
                 var retInvalidFieldTypes=me.model.validateDataType(data);
                 if(retInvalidRequireFields.length>0){
                     cb(null,{
-                        error:{
-                            code:"invalidDataType",
-                            fields:retInvalidRequireFields,
-                            ex:new Error("\r\n Invalid fields:\r\n"+me.descrideArray("\t\t",retInvalidRequireFields))
-                        }
+                        error:require("./exception")(
+                            data_modified_error,
+                            `Insert data to ${me.schema}.${me.collectionName} require data fields, see fields in this error`,
+                            errors.missing,
+                            retInvalidRequireFields,
+                            me.schema,
+                            me.collectionName,
+                            ""
+                        )
                     });
                     return;
+                    
                 }
             }
             me.getCollection().insertOne(data,function(err,result){
@@ -1024,11 +1164,16 @@ function _collection(db,schema,name,isNoneModel){
                     Object.keys(fields).forEach(function(key){
                         retErrorFields.push(key);
                     });
-                    cb(null,{
-                        error:{
-                            code:"duplicate",
-                            fields:retErrorFields
-                        },
+                    cb({
+                        error:require("./exception")(
+                            data_modified_error,
+                            `Insert data to ${me.schema}.${me.collectionName} with the values is existing, see fields in this error`,
+                            errors.duplicate_data,
+                            retErrorFields,
+                            me.schema,
+                            me.collectionName,
+                            ""
+                        ),
                         data:data
                     });
                     return;

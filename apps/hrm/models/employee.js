@@ -45,5 +45,8 @@ qMongo.model("hrm.employees","hrm.base").fields({
         }
     ]
 );
-var employee=function(){return qMongo.collection("hrm.employees")};
+var employee=function(schema)
+{
+    return qMongo.collection(schema,"hrm.employees");
+};
 module.exports=employee;

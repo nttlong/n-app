@@ -523,6 +523,18 @@ function _collection(db,schema,name,isNoneModel){
         
     }
     me.findOne=function(expr,params,callback){
+        if(expr===undefined){
+            return sync.exec(function(cb){
+                me.db.collection(me.collectionName).findOne((error,item)=>{
+                    if(error){
+                        cb(error)
+                    }
+                    else {
+                        cb(null,item);
+                    }
+                });
+            },callback)
+        }
         return sync.exec(function(cb){
             if(params!==undefined && (!(params instanceof Array)&&(typeof params!=="object"))){
                 params=[params];

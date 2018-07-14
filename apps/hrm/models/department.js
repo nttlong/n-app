@@ -39,7 +39,7 @@ qMongo.model("hrm.departments","hrm.base")
     data.ModifiedOn=new Date();
     data.ModefiedOnUTC=new Date();
 });
-var department=function(prefix){ 
-    return qMongo.collection(prefix?repfxi+".hrm.departments":"hrm.departments");
+var department=function(schema){ 
+    return qMongo.collection(schema,"hrm.departments");
 }
 module.exports=department;

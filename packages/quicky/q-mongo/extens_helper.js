@@ -298,26 +298,26 @@ function model(name,base){
                 });
             })
         }
-        me.fireOnBeforeInsert=function(data){
+        me.fireOnBeforeInsert=function(data,sender){
             if(me._onBeforeInsert){
                 me._onBeforeInsert.forEach(function(f){
-                    f(data);
+                    f(data,sender);
                 })
             }
            
         }
-        me.fireOnAfterInsert=function(data){
+        me.fireOnAfterInsert=function(data,sender){
             if(me._onAfterInsert){
                 me._onAfterInsert.forEach(function(f){
-                    f(data);
+                    f(data,sender);
                 })
             }
            
         }
-        me.fireOnBeforeUpdate=function(data){
+        me.fireOnBeforeUpdate=function(data,sender){
             if(me._onBeforeUpdate){
                 me._onBeforeUpdate.forEach(function(f){
-                    f(data);
+                    f(data,sender);
                 })
             }
             

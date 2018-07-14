@@ -1,6 +1,7 @@
 var baseModel=require("./base");
 var qMongo=require("quicky/q-mongo");
- 
+var department=require("./department");
+
 qMongo.model("hrm.employees","hrm.base").fields({
     Code:["text",true],
     FirstName:["text",true],
@@ -44,7 +45,17 @@ qMongo.model("hrm.employees","hrm.base").fields({
             $partialFilterExpression: {"ContactInfo.Email": {$type: "string"}}
         }
     ]
-);
+).onBeforeInsert((data,sender)=>{
+    if(data.Department && data.Department.Code){
+        var item=department(sender.schema).findOne("code=={0}",[data.Department.Code]);
+        console.log(item);
+        if(!item){
+            
+        }
+    }
+    console.log(data)
+});
+
 var employee=function(schema)
 {
     return qMongo.collection(schema,"hrm.employees");

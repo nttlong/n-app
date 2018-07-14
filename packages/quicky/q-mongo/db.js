@@ -448,6 +448,7 @@ function _collection(db,schema,name,isNoneModel){
         throw(new Error("It look like you forgot connect to database"));
     }
     var me=this;
+    me.schema=schema;
     me.collectionName=((schema)&&(schema!==""))?schema+"."+name:name;
     me.db=db;
     if(!isNoneModel){
@@ -989,7 +990,7 @@ function _collection(db,schema,name,isNoneModel){
        return sync.exec(function(cb){
             data=me.makesureData(data);
             if(!me._noneModel){
-                me.model.fireOnBeforeInsert(data);
+                me.model.fireOnBeforeInsert(data,me);
                 // me.checkData(data);
                 var retInvalidRequireFields=me.model.validateRequireData(data);
                 if(retInvalidRequireFields.length>0){
@@ -1040,7 +1041,7 @@ function _collection(db,schema,name,isNoneModel){
                     else {
                         data._id=result.insertedId;
                         if(!me._noneModel){
-                            me.model.fireOnAfterInsert(data);
+                            me.model.fireOnAfterInsert(data,me);
                         }
                         cb(null,{
                             data:data

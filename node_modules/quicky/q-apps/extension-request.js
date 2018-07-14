@@ -171,6 +171,14 @@ function applyRequest(req,res,me,owner){
     var getFullUrl=function(){
         return req.getAppUrl(req.url.substring(1,req.url.length))
     }
+    var isMobile=function(){
+        var MobileDetect = require('mobile-detect'),
+        md = new MobileDetect(req.headers['user-agent']);
+        return md.mobile()||
+        md.phone()||
+        md.tablet()
+        
+    }
    
     var renderModel={
         getAbsUrl:getAbsUrl,
@@ -191,8 +199,10 @@ function applyRequest(req,res,me,owner){
         getFullUrl:getFullUrl,
         escapeUrl:escapeUrl,
         unescapeUrl:unescapeUrl,
-        scriptTags:scriptTags
+        scriptTags:scriptTags,
+        isMobile:isMobile
     };
+    req.isMobile=isMobile
     req.render=function(model){
         try {
             function renderTemplate(cb){

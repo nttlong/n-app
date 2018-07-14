@@ -26,16 +26,20 @@
     $(document).ready(function(){
       
       function fixSlide(){
+        var footerHeight=0;
+        <% if @isMobile() :%>
+          footerHeight=80;
+        <% end %>
         var windowHeight=$(window).height();
         $(".slider-item.bk-product").css({
-          height:windowHeight-$('header[role="banner"]').height(),
-          "min-height":windowHeight-$('header[role="banner"]').height(),
-          "max-height":windowHeight-$('header[role="banner"]').height(),
+          height:windowHeight-$('header[role="banner"]').height()-footerHeight,
+          "min-height":windowHeight-$('header[role="banner"]').height()-footerHeight,
+          "max-height":windowHeight-$('header[role="banner"]').height()-footerHeight,
         });
       }
       fixSlide();
       $(window).resize(function(){
-        console.log("XXX");
+        
         fixSlide();
       });
     })

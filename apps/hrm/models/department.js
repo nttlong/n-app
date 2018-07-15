@@ -49,7 +49,7 @@ model.onBeforeUpdate((sender,cb)=>{
         var emp=require("./employee")(sender.schema);
         emp.updateMany({
             Department:{Code:sender.data.Code}
-        },"Department.Code=={0}",item.Code);
+        },"Department.Code=={0}",[item.Code]);
         cb();
         return;
     }

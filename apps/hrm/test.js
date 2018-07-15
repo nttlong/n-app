@@ -4,7 +4,7 @@ var emp=require("./models/employee")("sys")
 var deps=require("./models/department")("sys");
 var x=emp.aggregate()
 var dep=deps.findOne();
- deps.updateOne({Code:"TEST002"}, "_id=={0}",[dep._id]);
+ deps.updateOne({Code:"GD9"}, "_id=={0}",[dep._id]);
 // try {
 //    var retInsertDep= deps.insertOne({
 //         Code:"Director",

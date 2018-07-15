@@ -8,7 +8,9 @@ const data_modified_error="data_modified_error";
 var errors={
     missing:"missing",
     invalid_data_type:"invalid_data_type",
-    duplicate_data:"duplicate_data"
+    duplicate_data:"duplicate_data",
+    constraint:"constraint_error",
+    foreign_key_error:"foreign_key_error"
 }
 var _db;
 const _update_functions=",$pop,$unset$addToSet,$pull,$pullAll,$each,$position,$slice,$sort,$push,$inc";
@@ -104,7 +106,8 @@ function _aggregate(owner){
     me.checkField=function(field){
         var findItem=me.findField(field);
         if(!findItem){
-            throw(new Error("\r\n\t\tWhat is '"+field+"'?.\r\n\t\t'"+field+"' is not in below list:\r\n"+me.descrideArray("\t\t\t\t",me.getSelectedFields())));
+            var error=new Error("\r\n\t\tWhat is '"+field+"'?.\r\n\t\t'"+field+"' is not in below list:\r\n"+me.descrideArray("\t\t\t\t",me.getSelectedFields()));
+            throw(error);
         }
     }
     /**
@@ -114,7 +117,7 @@ function _aggregate(owner){
      */
     me.project=function(selectors,params){
         var args=arguments;
-        if(args.length>2){
+        if(args.length>=2 && typeof selectors=="string"){
             var _selectors={};
             for(var i=0;i<args.length;i++){
                 if(typeof args[i]==="string"){
@@ -545,6 +548,25 @@ function _collection(db,schema,name,isNoneModel){
     }
     else {
         me._isNoneModelisNoneModel;
+    }
+    me.throwForeignKeyError=function(message,localField,foreignField,source){
+        var ret=new Error(message);
+        ret.code=errors.foreign_key_error;
+        ret.localField=localField;
+        ret.foreignField=foreignField;
+        ret.source=me.collectionName;
+        ret.foreignSource=source;
+        throw(ret);
+    }
+    me.throwError=function(ex){
+        if(arguments.length>0){
+            var msg=require("../q-text-format")(arguments);
+            throw(new Error(ex));
+        }
+        if(typeof ex==="string"){
+            throw(new Error(ex));
+        }
+        throw(ex);
     }
     me.descrideArray=function(tabs,list){
         var ret="\r\n";
@@ -984,8 +1006,9 @@ function _collection(db,schema,name,isNoneModel){
                         error:require("./exception")(
                             data_modified_error,
                             `Update data to ${me.schema}.${me.collectionName} require data fields, see fields in this error`,
-                            errors.missing,
                             retInvalidRequireFields,
+                            errors.missing,
+                            
                             me.schema,
                             me.collectionName,
                             ""
@@ -999,8 +1022,8 @@ function _collection(db,schema,name,isNoneModel){
                         error:require("./exception")(
                             data_modified_error,
                             `Update data to ${me.schema}.${me.collectionName} with invalid data type fields, see fields in this error`,
-                            errors.invalid_data_type,
                             retInvalidFieldTypes,
+                            errors.invalid_data_type,
                             me.schema,
                             me.collectionName,
                             ""
@@ -1024,12 +1047,12 @@ function _collection(db,schema,name,isNoneModel){
                         Object.keys(fields).forEach(function(key){
                             retErrorFields.push(key);
                         });
-                        cb({
+                        cb(null,{
                             error:require("./exception")(
                                 data_modified_error,
                                 `Update data to ${me.schema}.${me.collectionName} with the values is existing, see fields in this error`,
-                                errors.duplicate_data,
                                 retErrorFields,
+                                errors.duplicate_data,
                                 me.schema,
                                 me.collectionName,
                                 ""
@@ -1122,7 +1145,20 @@ function _collection(db,schema,name,isNoneModel){
        return sync.exec(function(cb){
             data=me.makesureData(data);
             if(!me._noneModel){
-                me.model.fireOnBeforeInsert(data,me);
+                try {
+                    me.model.fireOnBeforeInsert(data,me);    
+                } catch (error) {
+                    if(error.code!=undefined){
+                        cb(null,{
+                            error:error
+                        });
+                    }
+                    else {
+                        throw(error);
+                    }
+                    
+                }
+                
                 // me.checkData(data);
                 var retInvalidRequireFields=me.model.validateRequireData(data);
                 if(retInvalidRequireFields.length>0){
@@ -1130,8 +1166,8 @@ function _collection(db,schema,name,isNoneModel){
                         error:require("./exception")(
                             data_modified_error,
                             `Insert data to ${me.schema}.${me.collectionName} require data fields, see fields in this error`,
-                            errors.missing,
                             retInvalidRequireFields,
+                            errors.missing,
                             me.schema,
                             me.collectionName,
                             ""
@@ -1164,12 +1200,13 @@ function _collection(db,schema,name,isNoneModel){
                     Object.keys(fields).forEach(function(key){
                         retErrorFields.push(key);
                     });
-                    cb({
+                    cb(null,{
                         error:require("./exception")(
                             data_modified_error,
                             `Insert data to ${me.schema}.${me.collectionName} with the values is existing, see fields in this error`,
-                            errors.duplicate_data,
                             retErrorFields,
+                            errors.duplicate_data,
+                            
                             me.schema,
                             me.collectionName,
                             ""

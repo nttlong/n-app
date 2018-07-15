@@ -31,7 +31,13 @@ function sync(fn, args, cb) {
             return result === undefined;
         });
         if (result.error) {
-            throw (new Error(result.error));
+            if(result.error.error){
+                throw (result.error.error);
+            }
+            else {
+                throw (new Error(result.error));
+            }
+           
         }
         else {
             return result.result;

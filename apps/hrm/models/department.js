@@ -1,6 +1,6 @@
 var baseModel=require("./base");
 var qMongo=require("quicky/q-mongo");
-qMongo.model("hrm.departments","hrm.base")
+var model=qMongo.model("hrm.departments","hrm.base")
 .fields(
     {
         Code:["text",true],
@@ -13,7 +13,8 @@ qMongo.model("hrm.departments","hrm.base")
             $detail:"text"
         }
     }
-).indexes([
+);
+model.indexes([
     {
         Code:1,
         $unique:true
@@ -35,9 +36,30 @@ qMongo.model("hrm.departments","hrm.base")
     }
     data.MapPath=mapPath;
    
-}).onBeforeUpdate(function(){
-    data.ModifiedOn=new Date();
-    data.ModefiedOnUTC=new Date();
+});
+model.onBeforeUpdate((sender,cb)=>{
+    sender.data.ModifiedOn=new Date();
+    sender.data.ModefiedOnUTC=new Date();
+    if(sender.filter && sender.filter._id && sender.filter._id.$eq){
+        var qr=sender.aggregate()
+        qr.project("Code")
+        qr.match("_id=={0}",[sender.filter._id.$eq])
+        var item=qr.toItem();
+
+        var emp=require("./employee")(sender.schema);
+        emp.updateMany({
+            Department:{Code:sender.data.Code}
+        },"Department.Code=={0}",item.Code);
+        cb();
+        return;
+    }
+    cb(null,sender);
+   
+    
+});
+model.onAfterUpdate((sender,cb)=>{
+    
+    cb();
 });
 var department=function(schema){ 
     return qMongo.collection(schema,"hrm.departments");

@@ -117,6 +117,13 @@ function _aggregate(owner){
      */
     me.project=function(selectors,params){
         var args=arguments;
+        if((!params)&&(typeof selectors==="string")){
+            _selectors={};
+            _selectors[selectors]=1;
+            return me.project(_selectors);
+
+
+        }
         if(args.length>=2 && typeof selectors=="string"){
             var _selectors={};
             for(var i=0;i<args.length;i++){
@@ -951,42 +958,70 @@ function _collection(db,schema,name,isNoneModel){
             }
 
         }
-
-        me.getCollection().updateOne(filter,updateData,function(err,ret){
-            if(err && err.code===11000){
-                var uniqueName=err.errmsg.split(":")[2].split(" ")[1];
-                var fields=me.model.$mongodb_indexes[uniqueName];
-                var retErrorFields=[];
-                Object.keys(fields).forEach(function(key){
-                    retErrorFields.push(key);
-                });
-                cb({
-                    error:require("./exception")(
-                        data_modified_error,
-                        `Update data to ${me.schema}.${me.collectionName} with the values is existing, see fields in this error`,
-                        errors.duplicate_data,
-                        retErrorFields,
-                        me.schema,
-                        me.collectionName,
-                        ""
-                    ),
-                    data:data
-                });
-                return;
-
-            }
-            else {
-                if(err){
-                    cb(err)
+        //raise on before update
+            try {
+                me.filter=filter;
+                me.data=updateData.$set;
+                me.model.fireOnBeforeUpdate(me,(ex,result)=>{
+                    try {
+                        updateData.$set=me.data;
+                        me.getCollection().updateOne(filter,updateData,function(err,ret){
+                            if(err && err.code===11000){
+                                var uniqueName=err.errmsg.split(":")[2].split(" ")[1];
+                                var fields=me.model.$mongodb_indexes[uniqueName];
+                                var retErrorFields=[];
+                                Object.keys(fields).forEach(function(key){
+                                    retErrorFields.push(key);
+                                });
+                                cb({
+                                    error:require("./exception")(
+                                        data_modified_error,
+                                        `Update data to ${me.schema}.${me.collectionName} with the values is existing, see fields in this error`,
+                                        errors.duplicate_data,
+                                        retErrorFields,
+                                        me.schema,
+                                        me.collectionName,
+                                        ""
+                                    ),
+                                    data:data
+                                });
+                                return;
+                
+                            }
+                            else {
+                                if(err){
+                                    cb(err)
+                                }
+                                else {
+                                    me.model.fireOnAfterUpdate(me,(err,res)=>{
+                                        cb(err,{
+                                            data:data
+                                        });
+                                    });
+                                    
+                                }
+                            }
+                
+                        });
+                    } catch (error) {
+                        cb(error);
+                    }
+                  
+                });    
+            } catch (error) {
+                if(error.code!=undefined){
+                    cb(null,{
+                        error:error
+                    });
                 }
                 else {
-                    cb(null,{
-                        data:data
-                    })
+                    throw(error);
                 }
+                
             }
+        //end on before update
 
-        });
+       
         },callback,__filename);
     }
     me.updateMany=function(data,expr,params,callback){
@@ -1146,7 +1181,9 @@ function _collection(db,schema,name,isNoneModel){
             data=me.makesureData(data);
             if(!me._noneModel){
                 try {
-                    me.model.fireOnBeforeInsert(data,me);    
+                    me.model.fireOnBeforeInsert(me,(ex,r)=>{
+                        cb(ex,r);
+                    });    
                 } catch (error) {
                     if(error.code!=undefined){
                         cb(null,{

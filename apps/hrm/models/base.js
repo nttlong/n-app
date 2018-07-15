@@ -14,8 +14,9 @@ qMongo.model("hrm.base")
     if(!data.CreatedBy){
         data.CreatedBy="application"
     }
-}).onBeforeUpdate(function(data){
-    data.ModifiedBy=data.ModifiedBy||"application";
-    data.ModifiedOn=new Date();
-    data.ModifiedOnUTC=new Date();
+}).onBeforeUpdate((sender,cb)=>{
+    sender.data.ModifiedBy=sender.data.ModifiedBy||"application";
+    sender.data.ModifiedOn=new Date();
+    sender.data.ModifiedOnUTC=new Date();
+    cb(null,sender);
 });

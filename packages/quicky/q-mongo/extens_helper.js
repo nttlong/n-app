@@ -298,35 +298,133 @@ function model(name,base){
                 });
             })
         }
-        me.fireOnBeforeInsert=function(data,sender){
+        me.fireOnBeforeInsert=function(sender,callback){
             if(me._onBeforeInsert){
-                me._onBeforeInsert.forEach(function(f){
-                    f(data,sender);
-                })
+                var call=(done,index)=>{
+                    if(index===undefined){
+                        index=0;
+                    }
+                    if(index===me._onAfterInsert.length){
+                        done();
+                    }
+                    else {
+                        me._onAfterInsert[index](sender,(ex,r)=>{
+                            if(ex){
+                                done(ex);
+                            }
+                            else {
+                                call(done,index+1);
+                            }
+                        });
+                    }
+                }
+                call(callback);
             }
-           
+            else {
+                callback();
+            }
         }
-        me.fireOnAfterInsert=function(data,sender){
+        me.fireOnAfterInsert=function(sender,callback){
             if(me._onAfterInsert){
-                me._onAfterInsert.forEach(function(f){
-                    f(data,sender);
-                })
+                if(me._onAfterInsert){
+                    var call=(done,index)=>{
+                        if(index===undefined){
+                            index=0;
+                        }
+                        if(index===me._onAfterInsert.length){
+                            done();
+                        }
+                        else {
+                            me._onAfterInsert[index](sender,(ex,r)=>{
+                                if(ex){
+                                    done(ex);
+                                }
+                                else {
+                                    call(done,index+1);
+                                }
+                            });
+                        }
+                    }
+                    call(callback);
+                }
+                else {
+                    callback();
+                }
             }
            
         }
-        me.fireOnBeforeUpdate=function(data,sender){
+        me.fireOnBeforeUpdate=function(sender,callback){
             if(me._onBeforeUpdate){
-                me._onBeforeUpdate.forEach(function(f){
-                    f(data,sender);
-                })
+                
+                var results=[]
+                var call=(done,index)=>{
+                    if(index===undefined){
+                        index=0;
+                    }
+                    if(index===me._onBeforeUpdate.length){
+                        done(null,sender);
+
+                    }
+                    else {
+                        try {
+                            me._onBeforeUpdate[index](sender,(ex,r)=>{
+                                if(ex){
+                                    callback(ex);
+                                }
+                                else {
+                                    if(index===me._onBeforeUpdate.length){
+                                        callback(null,results)
+                                    }
+                                    else {
+                                        results.push(r);
+                                        call(done,index+1);
+                                    }
+                                }
+                            });    
+                        } catch (error) {
+                            done(error);
+                        }
+                        
+                    }
+                };
+                call(callback);
+            }
+            else {
+                callback()
             }
             
         }
-        me.fireOnAfterUpdate=function(data){
+        me.fireOnAfterUpdate=function(sender,callback){
             if(me._onAfterUpdate){
-                me._onAfterUpdate.forEach(function(f){
-                    f(data);
-                })
+                var call=(done,index)=>{
+                    if(index===undefined){
+                        index=0;
+                    }
+                    if(index===me._onAfterUpdate.length){
+                        done(null,sender);
+
+                    }
+                    else {
+                        try {
+                            me._onAfterUpdate[index](sender,(ex,result)=>{
+                                if(ex){
+                                    done(ex);
+                                }
+                                else {
+                                    call(done,index+1);
+                                }
+                            });
+                        } catch (error) {
+                            done(error);
+                        }
+                        
+
+                    }
+                }
+                call(callback);
+            }
+            else {
+                callback();
             }
             
         }
@@ -351,11 +449,11 @@ function model(name,base){
             me._onBeforeUpdate.push(callback);
             return me;
         }
-        me.onAterUpdate=function(callback){
+        me.onAfterUpdate=function(callback){
             if(typeof callback!="function"){
-                throw(new Error('onAterUpdate of '+me.name+"' must be a function with data params"));
+                throw(new Error('onAfterUpdate of '+me.name+"' must be a function with data params"));
             }
-            me._onAterUpdate.push(callback);
+            me._onAfterUpdate.push(callback);
             return me;
         }
         if(!global["__q-apps__"]){

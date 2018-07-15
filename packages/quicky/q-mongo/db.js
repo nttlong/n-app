@@ -965,7 +965,7 @@ function _collection(db,schema,name,isNoneModel){
                 me.model.fireOnBeforeUpdate(me,(ex,result)=>{
                     try {
                         updateData.$set=me.data;
-                        me.getCollection().updateOne(filter,updateData,function(err,ret){
+                        me.getCollection().updateOne(me.filter,updateData,function(err,ret){
                             if(err && err.code===11000){
                                 var uniqueName=err.errmsg.split(":")[2].split(" ")[1];
                                 var fields=me.model.$mongodb_indexes[uniqueName];
@@ -1074,7 +1074,8 @@ function _collection(db,schema,name,isNoneModel){
                             me.descrideArray("\t\t",me.model.getFieldsAsArray())+"\r\n";
                     require("../q-exception").next(new Error(msg),__filename);
                 }
-                me.getCollection().updateMany(filter,{$set: data},function(err,ret){
+                me.filter=filter;
+                me.getCollection().updateMany(me.filter,{$set: data},function(err,ret){
                     if(err && err.code===11000){
                         var uniqueName=err.errmsg.split(":")[2].split(" ")[1];
                         var fields=me.model.$mongodb_indexes[uniqueName];

@@ -2,7 +2,7 @@ var baseModel=require("./base");
 var qMongo=require("quicky/q-mongo");
 var department=require("./department");
 
-qMongo.model("hrm.employees","hrm.base").fields({
+var model=qMongo.model("hrm.employees","hrm.base").fields({
     Code:["text",true],
     FirstName:["text",true],
     LastName:["text",true],
@@ -45,27 +45,7 @@ qMongo.model("hrm.employees","hrm.base").fields({
             $partialFilterExpression: {"ContactInfo.Email": {$type: "string"}}
         }
     ]
-).onBeforeInsert((data,sender)=>{
-   
-    if(data.Department && data.Department.Code){
-        var item=department(sender.schema).findOne("Code=={0}",[data.Department.Code]);
-        console.log(item);
-        if(!item){
-            if(item==null){
-                sender.throwForeignKeyError(
-                    `Departent code ${data.Department.Code} was not found in department `,
-                    "Department.Code",
-                    "Code",
-                    department(sender.schema).collectionName
-
-                )
-                return;
-                // throw(new Error(`Departent code ${data.Department.Code} was not found in department `))
-            }
-        }
-    }
-    console.log(data)
-});
+);
 
 var employee=function(schema)
 {

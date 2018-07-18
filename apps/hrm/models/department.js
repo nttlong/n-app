@@ -19,7 +19,8 @@ model.indexes([
         Code:1,
         $unique:true
     }
-]).onBeforeInsert(function(data){
+]);
+model.onBeforeInsert(function(data){
     var mapPath=[data.Code];
     if(data.ParentCode){
         var parentItem=department()
@@ -37,30 +38,7 @@ model.indexes([
     data.MapPath=mapPath;
    
 });
-model.onBeforeUpdate((sender,cb)=>{
-    sender.data.ModifiedOn=new Date();
-    sender.data.ModefiedOnUTC=new Date();
-    if(sender.filter && sender.filter._id && sender.filter._id.$eq){
-        var qr=sender.aggregate()
-        qr.project("Code")
-        qr.match("_id=={0}",[sender.filter._id.$eq])
-        var item=qr.toItem();
 
-        var emp=require("./employee")(sender.schema);
-        emp.updateMany({
-            Department:{Code:sender.data.Code}
-        },"Department.Code=={0}",[item.Code]);
-        cb();
-        return;
-    }
-    cb(null,sender);
-   
-    
-});
-model.onAfterUpdate((sender,cb)=>{
-    
-    cb();
-});
 var department=function(schema){ 
     return qMongo.collection(schema,"hrm.departments");
 }

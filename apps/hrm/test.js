@@ -2,9 +2,17 @@ var db=require("quicky/q-mongo")
 db.connect("mongodb://root:123456@localhost:27017/hrm")
 var emp=require("./models/employee")("sys")
 var deps=require("./models/department")("sys");
-var x=emp.aggregate()
-var dep=deps.findOne();
- var ret=deps.updateOne({Code:"GD200"}, "_id=={0}",[dep._id]);
+var x=emp.aggregate().project({
+    Code:1,
+    FirstName:1,
+    LastName:1,
+    "Department.Code":1
+}).lookup(deps,"Code","Department.Code","Dep");
+db.createView(x,"sys","employee_departments")
+console.log(x);
+
+// var dep=deps.findOne();
+//  var ret=deps.updateOne({Code:"GD200"}, "_id=={0}",[dep._id]);
 // try {
 //    var retInsertDep= deps.insertOne({
 //         Code:"Director",
@@ -27,7 +35,7 @@ var dep=deps.findOne();
     //         History:[]
     //     }
     // })
-    console.log(ret);
+    // console.log(ret);
 // } catch (error) {
 //     console.error(error)
 // }

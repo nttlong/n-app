@@ -244,7 +244,7 @@ function _aggregate(owner){
         if(typeof source==="object" && source.collectionName){
             source=source.collectionName;
         }
-        var sourceFields=M.model(source).getFieldsAsArray();
+        var sourceFields=M.model(fromSource.model.name).getFieldsAsArray();
         var findItem=sourceFields.find(function(ele){
             return Object.keys(ele)[0]==foreignField;
         })
@@ -1336,9 +1336,43 @@ function connect(url){
     return  global["__1-mongo-database-connection__"][url];
     
 }
-function createView(aggregateObject,schema,viewName){
-
-
+var view_cache={}
+function createView(aggregateObject,schema,name,callback){
+    return require("../q-sync").exec(function(cb){
+        if(view_cache["views."+name]){
+            cb(null,view_cache["views."+name]);
+            return;
+        }
+        var cnn=aggregateObject.owner.db;
+        var viewName="views."+name;
+        if((schema!==undefined) && (schema!=="")){
+            viewName=schema+"."+viewName;
+        }
+        var sourceName=aggregateObject.owner.model.name;
+        if((schema!==undefined) && (schema!=="")){
+            sourceName=schema+"."+sourceName;
+        }
+        cnn.dropCollection(viewName,function(ex,r){
+            // if(ex) {
+                // cb(ex);
+            // }
+            // else {
+                var command=[viewName,sourceName,aggregateObject._pipe];
+                var commandText=JSON.stringify(command);
+                commandText=commandText.substring(1,commandText.length-1);
+                commandText="db.createView("+commandText+")";
+                cnn.eval(commandText,function(ex,r){
+                    coll=aggregateObject;
+                    M.model("views."+name)
+                    .fields(coll.getSelectedFields());
+                    view_cache["views."+name]=collection(cnn,schema,"views."+name);
+                    cb(ex,view_cache["views."+name]);
+                });
+            // }
+        });
+        
+    },callback,__filename);
+    
 }
 module.exports={
     collection:collection,

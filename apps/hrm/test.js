@@ -8,8 +8,13 @@ var x=emp.aggregate().project({
     LastName:1,
     "Department.Code":1
 }).lookup(deps,"Code","Department.Code","Dep");
-db.createView(x,"sys","employee_departments")
-console.log(x);
+var v=db.createView(x,"sys","employee_departments");
+var items=v.aggregate().project(
+    {
+        x:1
+    }
+).toArray();
+console.log(items);
 
 // var dep=deps.findOne();
 //  var ret=deps.updateOne({Code:"GD200"}, "_id=={0}",[dep._id]);

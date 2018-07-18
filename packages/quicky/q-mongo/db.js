@@ -789,7 +789,7 @@ function _collection(db,schema,name,isNoneModel){
     me.find=function(expr,params,callback){
         if(expr===undefined){
             return sync.exec(function(cb){
-                me.db.collection(me.collectionName).find((error,item)=>{
+                me.db.collection(me.collectionName).find().toArray((error,item)=>{
                     if(error){
                         cb(error)
                     }

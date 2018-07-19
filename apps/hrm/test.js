@@ -23,7 +23,7 @@ v.project(
     }
 );
 var v2=db.createView(v,"sys","test_employee_departments");
-var items=v.aggregate().project(
+var items=v.project(
     {
         x:1
     }

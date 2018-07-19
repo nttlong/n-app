@@ -42,3 +42,14 @@
     at extractFieldInfo (/home/hcsadmin/n-app/node_modules/quicky/q-mongo/extens_helper.js:194:33)
     at ret.me.fields (/home/hcsadmin/n-app/node_modules/quicky/q-mongo/extens_helper.js:502:24)
     at /home/hcsadmin/n-app/node_modules/quicky/q-mongo/db.js:1376:22
+[2018-07-19T10:28:18.533] [ERROR] error - /home/hcsadmin/n-app/packages/quicky/q-mongo/extens_helper.js TypeError: Cannot convert undefined or null to object
+    at Function.keys (<anonymous>)
+    at extractFieldInfo (/home/hcsadmin/n-app/packages/quicky/q-mongo/extens_helper.js:191:20)
+    at /home/hcsadmin/n-app/packages/quicky/q-mongo/extens_helper.js:216:53
+    at Array.forEach (<anonymous>)
+    at extractFieldInfo (/home/hcsadmin/n-app/packages/quicky/q-mongo/extens_helper.js:191:33)
+    at ret.me.fields (/home/hcsadmin/n-app/packages/quicky/q-mongo/extens_helper.js:496:24)
+    at /home/hcsadmin/n-app/packages/quicky/q-mongo/db.js:1378:22
+    at result (/home/hcsadmin/n-app/node_modules/mongodb/lib/utils.js:414:17)
+    at session.endSession (/home/hcsadmin/n-app/node_modules/mongodb/lib/utils.js:401:11)
+    at ClientSession.endSession (/home/hcsadmin/n-app/node_modules/mongodb-core/lib/sessions.js:114:41)

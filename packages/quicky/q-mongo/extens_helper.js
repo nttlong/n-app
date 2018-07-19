@@ -187,6 +187,7 @@ function setValueByPath(path,data,val){
 
 }
 function extractFieldInfo(fields){
+    if(!fields) return {};
     var _fields={};
             Object.keys(fields).forEach(function(key){
                 if(key==="_id"){

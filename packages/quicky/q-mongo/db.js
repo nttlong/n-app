@@ -155,7 +155,15 @@ function _aggregate(owner){
                 if(selectors[key]===1){
                     me.checkField(key);
                     $project.$project[key]=1;
-                    currentSelectors.push(key);
+                    var _field={};
+                    _field[key]={$type:"object"};
+                    currentSelectors.push(_field);
+                    me.getChildFields(key).forEach(function(x){
+                        if(Object.keys(x)[0]!==key){
+                            currentSelectors.push(x);
+                        }
+                        
+                    })
                 }
                 else {
                     var unknownFields=[];
@@ -180,9 +188,7 @@ function _aggregate(owner){
                     $project.$project[key]=selector;
                     currentSelectors.push(key);
                 }
-                me.getChildFields(key).forEach(function(x){
-                    currentSelectors.push(x);
-                })
+                
             }
             else {
                 $project.$project[key]=0;
@@ -244,6 +250,7 @@ function _aggregate(owner){
         if(typeof source==="object" && source.collectionName){
             source=source.collectionName;
         }
+        var sourceModel=M.model(fromSource.model.name);
         var sourceFields=M.model(fromSource.model.name).getFieldsAsArray();
         var findItem=sourceFields.find(function(ele){
             return Object.keys(ele)[0]==foreignField;
@@ -258,7 +265,7 @@ function _aggregate(owner){
         if(typeof source=="object" && source.collectionName){
             source=source.collectionName;
         }
-        var sourceModel=M.model(source);
+        
         
         
         sourceModel.getFieldsAsArray().forEach(function(ele){
@@ -1363,8 +1370,12 @@ function createView(aggregateObject,schema,name,callback){
                 commandText="db.createView("+commandText+")";
                 cnn.eval(commandText,function(ex,r){
                     coll=aggregateObject;
+                    var fields={};
+                    coll.getSelectedFields().forEach(function(x){
+                        fields[Object.keys(x)[0]]=x[Object.keys(x)[0]]
+                    })
                     M.model("views."+name)
-                    .fields(coll.getSelectedFields());
+                    .fields(fields);
                     view_cache["views."+name]=collection(cnn,schema,"views."+name);
                     cb(ex,view_cache["views."+name]);
                 });

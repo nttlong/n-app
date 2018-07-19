@@ -1,7 +1,7 @@
 // var deps=require("./department");
 var models=require("./index");
 var db=require("quicky/q-mongo");
-db.connect("mongodb://root:123456@localhost:27017/hrm");
+var x=db.connect("mongodb://root:123456@localhost:27017/hrm");
 var ret= models.queries.getChildDepartmentsByCode("cn2").toArraySync();
 var lst=models.department().aggregate()
 .project(

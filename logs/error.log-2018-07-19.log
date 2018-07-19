@@ -53,3 +53,13 @@
     at result (/home/hcsadmin/n-app/node_modules/mongodb/lib/utils.js:414:17)
     at session.endSession (/home/hcsadmin/n-app/node_modules/mongodb/lib/utils.js:401:11)
     at ClientSession.endSession (/home/hcsadmin/n-app/node_modules/mongodb-core/lib/sessions.js:114:41)
+[2018-07-19T20:45:13.136] [ERROR] error - E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js { name: 'candidate',
+  dir: 'apps/candidate',
+  hostDir: 'candidate',
+  fullHostDir: 'e:\\code\\nodejs\\quicky-2\\apps/candidate',
+  _mdl: { router: {} } }
+[2018-07-19T20:45:38.014] [ERROR] error - E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js { name: 'candidate',
+  dir: 'apps/candidate',
+  hostDir: 'candidate',
+  fullHostDir: 'e:\\code\\nodejs\\quicky-2\\apps/candidate',
+  _mdl: { router: {} } }

@@ -26,6 +26,7 @@
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "filewatcher": "^3.0.1",
+    "loadtest": "^3.0.3",
     "locks": "^0.2.2",
     "mathjs": "^5.0.2",
     "mobile-detect": "^1.4.2",

@@ -1,0 +1,850 @@
+[2018-09-03T17:57:57.685] [DEBUG] debug - E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js Error: 
+ Error:'E:\code\nodejs\quicky-2\packages\quicky\q-system\libs.signIn.js'
+error :
+'Cannot read property 'error' of undefined
+ at declare :
+function (cb){
+        sessions(schema).deleteOne("SessionID=={0}",sessionId);
+        var newSession=sessions(schema).insertOne({
+            Username:username,
+            LoginTime:dateTimeMdl.getNow(),
+            LoginTimeUTC:dateTimeMdl.getUTCNow(),
+            Language:language,
+            SessionID:sessionId,
+            IsLogout:false
+        });
+        if(newSession.error){
+            cb(newSession.error);
+            return;
+        }
+        var user=findUser(
+            schema,
+            newSession.data.Username
+        );
+        global[cache_key][sessionId]=user;
+        cb(null,user);
+
+    }
+    at Function.run (34:25)
+    at sync (E:\code\nodejs\quicky-2\packages\quicky\q-sync\index.js:34:10)
+    at Object.exec (E:\code\nodejs\quicky-2\packages\quicky\q-sync\index.js:34:10)
+    at module.exports (E:\code\nodejs\quicky-2\packages\quicky\q-system\libs.signIn.js:34:10)
+    at Object.post (e:\code\nodejs\quicky-2\apps\admin\controllers\login.js:34:45)
+    at E:\code\nodejs\quicky-2\packages\quicky\q-controller\index.js:34:10
+    at Object.load (e:\code\nodejs\quicky-2\apps\admin\controllers\login.js:34:10)
+    at Object.module.exports [as e:\code\nodejs\quicky-2\apps\admin\controllers\login] (E:\code\nodejs\quicky-2\packages\quicky\q-controller\index.js:34:10)
+    at execHandlerByPath (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:34:25)
+    at E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:34:34
+    at Object.authenticate (e:\code\nodejs\quicky-2\apps\admin\index.js:28:10)
+    at me.url.owner.handler (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:34:45)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:34:10)
+    at Route.dispatch (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:34:3)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at IncomingMessage.<anonymous> (E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js:34:10)
+    at emitNone (events.js:34:10)
+    at IncomingMessage.emit (events.js:34:3)
+    at endReadableNT (_stream_readable.js:34:10)
+    at _combinedTickCallback (internal/process/next_tick.js:34:10)
+    at process._tickCallback (internal/process/next_tick.js:34:3)
+
+[2018-09-03T18:08:54.568] [DEBUG] debug - E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js Error: 
+ Error:'E:\code\nodejs\quicky-2\packages\quicky\q-system\libs.signIn.js'
+error :
+'Cannot read property 'error' of undefined
+ at declare :
+function (cb){
+        sessions(schema).deleteOne("SessionID=={0}",sessionId);
+        var newSession=sessions(schema).insertOne({
+            Username:username,
+            LoginTime:dateTimeMdl.getNow(),
+            LoginTimeUTC:dateTimeMdl.getUTCNow(),
+            Language:language,
+            SessionID:sessionId,
+            IsLogout:false
+        });
+        if(newSession.error){
+            cb(newSession.error);
+            return;
+        }
+        var user=findUser(
+            schema,
+            newSession.data.Username
+        );
+        global[cache_key][sessionId]=user;
+        cb(null,user);
+
+    }
+    at Function.run (34:25)
+    at sync (E:\code\nodejs\quicky-2\packages\quicky\q-sync\index.js:34:10)
+    at Object.exec (E:\code\nodejs\quicky-2\packages\quicky\q-sync\index.js:34:10)
+    at module.exports (E:\code\nodejs\quicky-2\packages\quicky\q-system\libs.signIn.js:34:10)
+    at Object.post (e:\code\nodejs\quicky-2\apps\admin\controllers\login.js:34:45)
+    at E:\code\nodejs\quicky-2\packages\quicky\q-controller\index.js:34:10
+    at Object.load (e:\code\nodejs\quicky-2\apps\admin\controllers\login.js:34:10)
+    at Object.module.exports [as e:\code\nodejs\quicky-2\apps\admin\controllers\login] (E:\code\nodejs\quicky-2\packages\quicky\q-controller\index.js:34:10)
+    at execHandlerByPath (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:34:25)
+    at E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:34:34
+    at Object.authenticate (e:\code\nodejs\quicky-2\apps\admin\index.js:28:10)
+    at me.url.owner.handler (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:34:45)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:34:10)
+    at Route.dispatch (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:34:3)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at IncomingMessage.<anonymous> (E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js:34:10)
+    at emitNone (events.js:34:10)
+    at IncomingMessage.emit (events.js:34:3)
+    at endReadableNT (_stream_readable.js:34:10)
+    at _combinedTickCallback (internal/process/next_tick.js:34:10)
+    at process._tickCallback (internal/process/next_tick.js:34:3)
+
+[2018-09-03T18:12:13.877] [DEBUG] debug - E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js Error: 
+ Error:'E:\code\nodejs\quicky-2\packages\quicky\q-system\libs.signIn.js'
+error :
+'Cannot read property 'error' of undefined
+ at declare :
+function (cb){
+        sessions(schema).deleteOne("SessionID=={0}",sessionId);
+        var newSession=sessions(schema).insertOne({
+            Username:username,
+            LoginTime:dateTimeMdl.getNow(),
+            LoginTimeUTC:dateTimeMdl.getUTCNow(),
+            Language:language,
+            SessionID:sessionId,
+            IsLogout:false
+        });
+          if(newSession.error){
+            cb(newSession.error);
+            return;
+        }
+        var user=findUser(
+            schema,
+            newSession.data.Username
+        );
+        global[cache_key][sessionId]=user;
+        cb(null,user);
+
+    }
+    at Function.run (114:29)
+    at sync (E:\code\nodejs\quicky-2\packages\quicky\q-sync\index.js:29:12)
+    at Object.exec (E:\code\nodejs\quicky-2\packages\quicky\q-sync\index.js:157:20)
+    at module.exports (E:\code\nodejs\quicky-2\packages\quicky\q-system\libs.signIn.js:23:17)
+    at Object.post (e:\code\nodejs\quicky-2\apps\admin\controllers\login.js:27:55)
+    at E:\code\nodejs\quicky-2\packages\quicky\q-controller\index.js:166:38
+    at Object.load (e:\code\nodejs\quicky-2\apps\admin\controllers\login.js:16:13)
+    at Object.module.exports [as e:\code\nodejs\quicky-2\apps\admin\controllers\login] (E:\code\nodejs\quicky-2\packages\quicky\q-controller\index.js:154:22)
+    at execHandlerByPath (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:42:25)
+    at E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:95:37
+    at Object.authenticate (e:\code\nodejs\quicky-2\apps\admin\index.js:8:13)
+    at me.url.owner.handler (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:93:50)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:95:5)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:174:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:317:13)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:275:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:635:15
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:260:14)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:174:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:317:13)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:174:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:317:13)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:275:10)
+    at IncomingMessage.<anonymous> (E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js:137:21)
+    at emitNone (events.js:86:13)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:80:11)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+
+[2018-09-03T18:32:02.921] [DEBUG] debug - E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js Error: 
+ Error:'E:\code\nodejs\quicky-2\packages\quicky\q-system\libs.signIn.js'
+error :
+'done is not a function
+ at declare :
+function (cb){
+        sessions(schema).deleteOne("SessionID=={0}",sessionId);
+        var newSession=sessions(schema).insertOne({
+            Username:username,
+            LoginTime:dateTimeMdl.getNow(),
+            LoginTimeUTC:dateTimeMdl.getUTCNow(),
+            Language:language,
+            SessionID:sessionId,
+            IsLogout:false
+        });
+          if(newSession.error){
+            cb(newSession.error);
+            return;
+        }
+        var user=findUser(
+            schema,
+            newSession.data.Username
+        );
+        global[cache_key][sessionId]=user;
+        cb(null,user);
+
+    }
+    at Function.run (34:25)
+    at sync (E:\code\nodejs\quicky-2\packages\quicky\q-sync\index.js:34:10)
+    at Object.exec (E:\code\nodejs\quicky-2\packages\quicky\q-sync\index.js:34:10)
+    at module.exports (E:\code\nodejs\quicky-2\packages\quicky\q-system\libs.signIn.js:34:10)
+    at Object.post (e:\code\nodejs\quicky-2\apps\admin\controllers\login.js:34:45)
+    at E:\code\nodejs\quicky-2\packages\quicky\q-controller\index.js:34:10
+    at Object.load (e:\code\nodejs\quicky-2\apps\admin\controllers\login.js:34:10)
+    at Object.module.exports [as e:\code\nodejs\quicky-2\apps\admin\controllers\login] (E:\code\nodejs\quicky-2\packages\quicky\q-controller\index.js:34:10)
+    at execHandlerByPath (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:34:25)
+    at E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:34:34
+    at Object.authenticate (e:\code\nodejs\quicky-2\apps\admin\index.js:28:10)
+    at me.url.owner.handler (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:34:45)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:34:10)
+    at Route.dispatch (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:34:3)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at IncomingMessage.<anonymous> (E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js:34:10)
+    at emitNone (events.js:34:10)
+    at IncomingMessage.emit (events.js:34:3)
+    at endReadableNT (_stream_readable.js:34:10)
+    at _combinedTickCallback (internal/process/next_tick.js:34:10)
+    at process._tickCallback (internal/process/next_tick.js:34:3)
+
+[2018-09-03T18:51:56.036] [DEBUG] debug - E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js Error: 
+ Error:'E:\code\nodejs\quicky-2\packages\quicky\q-system\libs.signIn.js'
+error :
+'
+error :
+'[object Object]
+ at declare :
+function (cb){
+            data=me.makesureData(data);
+            if(!me._noneModel){
+                try {
+                    var retBeforeInsert=sync.exec(function(cb){
+                        me.model.fireOnBeforeInsert(data,function(ex,r){
+                            cb(ex,r)
+                        })
+                    });
+                    var x= retBeforeInsert
+                    // me.model.fireOnBeforeInsert(me,(ex,r)=>{
+                    //     cb(ex,r);
+                    // });    
+                } catch (error) {
+                    if(error.code!=undefined){
+                        cb(null,{
+                            error:error
+                        });
+                    }
+                    else {
+                        throw(error);
+                    }
+                    
+                }
+                
+                // me.checkData(data);
+                var retInvalidRequireFields=me.model.validateRequireData(data);
+                if(retInvalidRequireFields.length>0){
+                    cb(null,{
+                        error:require("./exception")(
+                            data_modified_error,
+                            `Insert data to ${me.schema}.${me.collectionName} require data fields, see fields in this error`,
+                            retInvalidRequireFields,
+                            errors.missing,
+                            me.schema,
+                            me.collectionName,
+                            ""
+                        )
+                    });
+                    return;
+                }
+                var retInvalidFieldTypes=me.model.validateDataType(data);
+                if(retInvalidRequireFields.length>0){
+                    cb(null,{
+                        error:require("./exception")(
+                            data_modified_error,
+                            `Insert data to ${me.schema}.${me.collectionName} require data fields, see fields in this error`,
+                            errors.missing,
+                            retInvalidRequireFields,
+                            me.schema,
+                            me.collectionName,
+                            ""
+                        )
+                    });
+                    return;
+                    
+                }
+            }
+            me.getCollection().insertOne(data,function(err,result){
+                if(err && err.code===11000){
+                    var uniqueName=err.errmsg.split(":")[2].split(" ")[1];
+                    var fields=me.model.$mongodb_indexes[uniqueName];
+                    var retErrorFields=[];
+                    Object.keys(fields).forEach(function(key){
+                        retErrorFields.push(key);
+                    });
+                    cb(null,{
+                        error:require("./exception")(
+                            data_modified_error,
+                            `Insert data to ${me.schema}.${me.collectionName} with the values is existing, see fields in this error`,
+                            retErrorFields,
+                            errors.duplicate_data,
+                            
+                            me.schema,
+                            me.collectionName,
+                            ""
+                        ),
+                        data:data
+                    });
+                    return;
+
+                }
+                else {
+                    if(err){
+                        cb(err)
+                    }
+                    else {
+                        data._id=result.insertedId;
+                        if(!me._noneModel){
+                            var retAfterInsert=sync.exec(function(cb){
+                                me.model.fireOnAfterInsert(data,function(ex,r){
+                                    cb(ex,r);
+                                });
+                            });
+                            
+                        }
+                        cb(null,{
+                            data:data
+                        })
+                    }
+                }
+            });
+        }
+ at declare :
+function (cb){
+        sessions(schema).deleteOne("SessionID=={0}",sessionId);
+        var newSession=sessions(schema).insertOne({
+            Username:username,
+            LoginTime:dateTimeMdl.getNow(),
+            LoginTimeUTC:dateTimeMdl.getUTCNow(),
+            Language:language,
+            SessionID:sessionId,
+            IsLogout:false
+        });
+          if(newSession.error){
+            cb(newSession.error);
+            return;
+        }
+        var user=findUser(
+            schema,
+            newSession.data.Username
+        );
+        global[cache_key][sessionId]=user;
+        cb(null,user);
+
+    }
+    at Function.run (114:29)
+    at sync (E:\code\nodejs\quicky-2\packages\quicky\q-sync\index.js:29:12)
+    at Object.exec (E:\code\nodejs\quicky-2\packages\quicky\q-sync\index.js:157:20)
+    at module.exports (E:\code\nodejs\quicky-2\packages\quicky\q-system\libs.signIn.js:23:17)
+    at Object.post (e:\code\nodejs\quicky-2\apps\admin\controllers\login.js:27:55)
+    at E:\code\nodejs\quicky-2\packages\quicky\q-controller\index.js:166:38
+    at Object.load (e:\code\nodejs\quicky-2\apps\admin\controllers\login.js:16:13)
+    at Object.module.exports [as e:\code\nodejs\quicky-2\apps\admin\controllers\login] (E:\code\nodejs\quicky-2\packages\quicky\q-controller\index.js:154:22)
+    at execHandlerByPath (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:42:25)
+    at E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:95:37
+    at Object.authenticate (e:\code\nodejs\quicky-2\apps\admin\index.js:8:13)
+    at me.url.owner.handler (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:93:50)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:95:5)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:174:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:317:13)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:275:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:635:15
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:260:14)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:174:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:317:13)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:174:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:317:13)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:275:10)
+    at IncomingMessage.<anonymous> (E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js:137:21)
+    at emitNone (events.js:86:13)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:80:11)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+
+[2018-09-03T18:54:58.692] [DEBUG] debug - E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js Error: 
+ Error:'E:\code\nodejs\quicky-2\packages\quicky\q-system\libs.signIn.js'
+error :
+'
+error :
+'[object Object]
+ at declare :
+function (cb){
+            data=me.makesureData(data);
+            if(!me._noneModel){
+                try {
+                    var retBeforeInsert=sync.exec(function(cb){
+                        me.model.fireOnBeforeInsert(data,function(result,ex){
+                            cb(result,ex)
+                        })
+                    });
+                    var x= retBeforeInsert
+                    // me.model.fireOnBeforeInsert(me,(ex,r)=>{
+                    //     cb(ex,r);
+                    // });    
+                } catch (error) {
+                    if(error.code!=undefined){
+                        cb(null,{
+                            error:error
+                        });
+                    }
+                    else {
+                        throw(error);
+                    }
+                    
+                }
+                
+                // me.checkData(data);
+                var retInvalidRequireFields=me.model.validateRequireData(data);
+                if(retInvalidRequireFields.length>0){
+                    cb(null,{
+                        error:require("./exception")(
+                            data_modified_error,
+                            `Insert data to ${me.schema}.${me.collectionName} require data fields, see fields in this error`,
+                            retInvalidRequireFields,
+                            errors.missing,
+                            me.schema,
+                            me.collectionName,
+                            ""
+                        )
+                    });
+                    return;
+                }
+                var retInvalidFieldTypes=me.model.validateDataType(data);
+                if(retInvalidRequireFields.length>0){
+                    cb(null,{
+                        error:require("./exception")(
+                            data_modified_error,
+                            `Insert data to ${me.schema}.${me.collectionName} require data fields, see fields in this error`,
+                            errors.missing,
+                            retInvalidRequireFields,
+                            me.schema,
+                            me.collectionName,
+                            ""
+                        )
+                    });
+                    return;
+                    
+                }
+            }
+            me.getCollection().insertOne(data,function(err,result){
+                if(err && err.code===11000){
+                    var uniqueName=err.errmsg.split(":")[2].split(" ")[1];
+                    var fields=me.model.$mongodb_indexes[uniqueName];
+                    var retErrorFields=[];
+                    Object.keys(fields).forEach(function(key){
+                        retErrorFields.push(key);
+                    });
+                    cb(null,{
+                        error:require("./exception")(
+                            data_modified_error,
+                            `Insert data to ${me.schema}.${me.collectionName} with the values is existing, see fields in this error`,
+                            retErrorFields,
+                            errors.duplicate_data,
+                            
+                            me.schema,
+                            me.collectionName,
+                            ""
+                        ),
+                        data:data
+                    });
+                    return;
+
+                }
+                else {
+                    if(err){
+                        cb(err)
+                    }
+                    else {
+                        data._id=result.insertedId;
+                        if(!me._noneModel){
+                            var retAfterInsert=sync.exec(function(cb){
+                                me.model.fireOnAfterInsert(data,function(ex,r){
+                                    cb(ex,r);
+                                });
+                            });
+                            
+                        }
+                        cb(null,{
+                            data:data
+                        })
+                    }
+                }
+            });
+        }
+ at declare :
+function (cb){
+        sessions(schema).deleteOne("SessionID=={0}",sessionId);
+        var newSession=sessions(schema).insertOne({
+            Username:username,
+            LoginTime:dateTimeMdl.getNow(),
+            LoginTimeUTC:dateTimeMdl.getUTCNow(),
+            Language:language,
+            SessionID:sessionId,
+            IsLogout:false
+        });
+          if(newSession.error){
+            cb(newSession.error);
+            return;
+        }
+        var user=findUser(
+            schema,
+            newSession.data.Username
+        );
+        global[cache_key][sessionId]=user;
+        cb(null,user);
+
+    }
+    at Function.run (34:25)
+    at sync (E:\code\nodejs\quicky-2\packages\quicky\q-sync\index.js:34:10)
+    at Object.exec (E:\code\nodejs\quicky-2\packages\quicky\q-sync\index.js:34:10)
+    at module.exports (E:\code\nodejs\quicky-2\packages\quicky\q-system\libs.signIn.js:34:10)
+    at Object.post (e:\code\nodejs\quicky-2\apps\admin\controllers\login.js:34:45)
+    at E:\code\nodejs\quicky-2\packages\quicky\q-controller\index.js:34:10
+    at Object.load (e:\code\nodejs\quicky-2\apps\admin\controllers\login.js:34:10)
+    at Object.module.exports [as e:\code\nodejs\quicky-2\apps\admin\controllers\login] (E:\code\nodejs\quicky-2\packages\quicky\q-controller\index.js:34:10)
+    at execHandlerByPath (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:34:25)
+    at E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:34:34
+    at Object.authenticate (e:\code\nodejs\quicky-2\apps\admin\index.js:28:10)
+    at me.url.owner.handler (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:34:45)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:34:10)
+    at Route.dispatch (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:34:3)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at IncomingMessage.<anonymous> (E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js:34:10)
+    at emitNone (events.js:34:10)
+    at IncomingMessage.emit (events.js:34:3)
+    at endReadableNT (_stream_readable.js:34:10)
+    at _combinedTickCallback (internal/process/next_tick.js:34:10)
+    at process._tickCallback (internal/process/next_tick.js:34:3)
+
+[2018-09-03T18:58:33.176] [DEBUG] debug - E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js Error: 
+ Error:'E:\code\nodejs\quicky-2\packages\quicky\q-system\libs.signIn.js'
+error :
+'
+error :
+'[object Object]
+ at declare :
+function (cb){
+            data=me.makesureData(data);
+            if(!me._noneModel){
+                try {
+                    var retBeforeInsert=sync.exec(function(cb){
+                        me.model.fireOnBeforeInsert(data,function(result,ex){
+                            cb(result,ex)
+                        })
+                    },callback);
+                    var x= retBeforeInsert
+                    // me.model.fireOnBeforeInsert(me,(ex,r)=>{
+                    //     cb(ex,r);
+                    // });    
+                } catch (error) {
+                    if(error.code!=undefined){
+                        cb(null,{
+                            error:error
+                        });
+                    }
+                    else {
+                        throw(error);
+                    }
+                    
+                }
+                
+                // me.checkData(data);
+                var retInvalidRequireFields=me.model.validateRequireData(data);
+                if(retInvalidRequireFields.length>0){
+                    cb(null,{
+                        error:require("./exception")(
+                            data_modified_error,
+                            `Insert data to ${me.schema}.${me.collectionName} require data fields, see fields in this error`,
+                            retInvalidRequireFields,
+                            errors.missing,
+                            me.schema,
+                            me.collectionName,
+                            ""
+                        )
+                    });
+                    return;
+                }
+                var retInvalidFieldTypes=me.model.validateDataType(data);
+                if(retInvalidRequireFields.length>0){
+                    cb(null,{
+                        error:require("./exception")(
+                            data_modified_error,
+                            `Insert data to ${me.schema}.${me.collectionName} require data fields, see fields in this error`,
+                            errors.missing,
+                            retInvalidRequireFields,
+                            me.schema,
+                            me.collectionName,
+                            ""
+                        )
+                    });
+                    return;
+                    
+                }
+            }
+            me.getCollection().insertOne(data,function(err,result){
+                if(err && err.code===11000){
+                    var uniqueName=err.errmsg.split(":")[2].split(" ")[1];
+                    var fields=me.model.$mongodb_indexes[uniqueName];
+                    var retErrorFields=[];
+                    Object.keys(fields).forEach(function(key){
+                        retErrorFields.push(key);
+                    });
+                    cb(null,{
+                        error:require("./exception")(
+                            data_modified_error,
+                            `Insert data to ${me.schema}.${me.collectionName} with the values is existing, see fields in this error`,
+                            retErrorFields,
+                            errors.duplicate_data,
+                            
+                            me.schema,
+                            me.collectionName,
+                            ""
+                        ),
+                        data:data
+                    });
+                    return;
+
+                }
+                else {
+                    if(err){
+                        cb(err)
+                    }
+                    else {
+                        data._id=result.insertedId;
+                        if(!me._noneModel){
+                            var retAfterInsert=sync.exec(function(cb){
+                                me.model.fireOnAfterInsert(data,function(ex,r){
+                                    cb(ex,r);
+                                });
+                            });
+                            
+                        }
+                        cb(null,{
+                            data:data
+                        })
+                    }
+                }
+            });
+        }
+ at declare :
+function (cb){
+        sessions(schema).deleteOne("SessionID=={0}",sessionId);
+        var newSession=sessions(schema).insertOne({
+            Username:username,
+            LoginTime:dateTimeMdl.getNow(),
+            LoginTimeUTC:dateTimeMdl.getUTCNow(),
+            Language:language,
+            SessionID:sessionId,
+            IsLogout:false
+        });
+          if(newSession.error){
+            cb(newSession.error);
+            return;
+        }
+        var user=findUser(
+            schema,
+            newSession.data.Username
+        );
+        global[cache_key][sessionId]=user;
+        cb(null,user);
+
+    }
+    at Function.run (34:25)
+    at sync (E:\code\nodejs\quicky-2\packages\quicky\q-sync\index.js:34:10)
+    at Object.exec (E:\code\nodejs\quicky-2\packages\quicky\q-sync\index.js:34:10)
+    at module.exports (E:\code\nodejs\quicky-2\packages\quicky\q-system\libs.signIn.js:34:10)
+    at Object.post (e:\code\nodejs\quicky-2\apps\admin\controllers\login.js:34:45)
+    at E:\code\nodejs\quicky-2\packages\quicky\q-controller\index.js:34:10
+    at Object.load (e:\code\nodejs\quicky-2\apps\admin\controllers\login.js:34:10)
+    at Object.module.exports [as e:\code\nodejs\quicky-2\apps\admin\controllers\login] (E:\code\nodejs\quicky-2\packages\quicky\q-controller\index.js:34:10)
+    at execHandlerByPath (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:34:25)
+    at E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:34:34
+    at Object.authenticate (e:\code\nodejs\quicky-2\apps\admin\index.js:28:10)
+    at me.url.owner.handler (E:\code\nodejs\quicky-2\packages\quicky\q-apps\extension.js:34:45)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:34:10)
+    at Route.dispatch (E:\code\nodejs\quicky-2\node_modules\express\lib\router\route.js:34:3)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Function.handle (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3)
+    at router (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at Layer.handle [as handle_request] (E:\code\nodejs\quicky-2\node_modules\express\lib\router\layer.js:34:3)
+    at trim_prefix (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:3
+    at Function.process_params (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at next (E:\code\nodejs\quicky-2\node_modules\express\lib\router\index.js:34:10)
+    at IncomingMessage.<anonymous> (E:\code\nodejs\quicky-2\packages\quicky\q-apps\index.js:34:10)
+    at emitNone (events.js:34:10)
+    at IncomingMessage.emit (events.js:34:3)
+    at endReadableNT (_stream_readable.js:34:10)
+    at _combinedTickCallback (internal/process/next_tick.js:34:10)
+    at process._tickCallback (internal/process/next_tick.js:34:3)
+

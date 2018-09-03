@@ -24,7 +24,7 @@ api.connect(cnn,"sys_api_callback_cache");
 app.setSecretKey("sas03udh74327%$63283");
 app.setCacheMode(true);
 app.setCompressMode(false);
-app.sessionCacheUseMemCache(true);
+// app.sessionCacheUseMemCache(true);
 app.sessionCacheUseMemCache(false);
 var port=process.env.PORT || 3000;
 app.load(
@@ -38,12 +38,12 @@ app.load(
             name:"cms",
             dir:"apps/cms"
         },
-        {
-            name:"candidate",
-            dir:"apps/candidate",
-            hostDir:"candidate"
+        // {
+        //     name:"candidate",
+        //     dir:"apps/candidate",
+        //     hostDir:"candidate"
 
-        },
+        // },
         {
             name:"candidate-admin",
             dir:"apps/candidate-admin",

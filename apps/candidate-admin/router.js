@@ -3,6 +3,7 @@ var apps=require("quicky/q-apps");
 var express = require('express')
   , router = express.Router()
   //Declare route for app
+  
   apps.urls(router)
 .setTemplateDir(__dirname) //set template dir
 //Create route with template file in templates
